@@ -1,0 +1,8 @@
+{
+  "A": {"name":"Tritono","materials":3,"zip":true,"design":"Elaborado","stamp":true,"relieve":"Baixo relevo","color":"purple","pvp":"AR$ 52.000"},
+  "B1": {"name":"Bitono 1","materials":2,"zip":true,"design":"Semi-Elaborado","stamp":true,"relieve":"Variable","color":"blue","pvp":"AR$ 47.000"},
+  "B2": {"name":"Arte","materials":2,"zip":true,"design":"ARTE (4:4 cores)","stamp":true,"relieve":"Variable","color":"cyan","pvp":"AR$ 47.000"},
+  "C1": {"name":"GE Letra Grande","materials":1,"zip":true,"design":"Tipográfico","stamp":true,"relieve":"Baixo relevo","color":"green","pvp":"AR$ 44.000"},
+  "D": {"name":"GC Canto Dorado","materials":1,"zip":false,"design":"Decorativo","stamp":true,"relieve":"Baixo relevo","color":"yellow","pvp":"AR$ 35.000"},
+  "E": {"name":"GI Vinilo Económico","materials":1,"zip":false,"design":"Simple","stamp":false,"relieve":"No","color":"gray","pvp":"AR$ 33.000"}
+}

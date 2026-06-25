@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SBA BibleCover</title>
+    <style>
+        :root {
+            --bg: #0a0a0b;
+            --card: #141416;
+            --border: #27272a;
+            --text: #fafafa;
+            --muted: #a1a1aa;
+            --purple: #a855f7;
+            --blue: #3b82f6;
+            --cyan: #06b6d4;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --gray: #71717a;
+            --red: #ef4444;
+            --gold: #fbbf24
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: system-ui, sans-serif;
+            font-size: 14px
+        }
+
+        .wrap {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px
+        }
+
+        .hdr {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 16px
+        }
+
+        .hdr h1 {
+            font-size: 20px;
+            font-weight: 600
+        }
+
+        .hdr input {
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 6px 12px;
+            border-radius: 6px;
+            width: 200px;
+            font-size: 13px
+        }
+
+        .leg {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 12px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 16px
+        }
+
+        .leg span {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            transition: opacity .15s, transform .15s
+        }
+
+        .leg span:hover {
+            opacity: .85
+        }
+
+        .leg span.on {
+            outline: 2px solid #fff;
+            outline-offset: 2px
+        }
+
+        .leg .count {
+            background: rgba(255, 255, 255, .2);
+            font-size: 9px;
+            padding: 1px 5px;
+            border-radius: 3px;
+            margin-left: 4px
+        }
+
+        .tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px
+        }
+
+        .tabs button {
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 6px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px
+        }
+
+        .tabs button.on {
+            background: #fff;
+            color: #000;
+            border-color: #fff
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 12px
+        }
+
+        .card {
+            position: relative;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform .15s
+        }
+
+        .card:hover {
+            transform: translateY(-2px)
+        }
+
+        .card img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: contain;
+            background: #000;
+            display: block
+        }
+
+        .card .inf {
+            padding: 8px
+        }
+
+        .card .nm {
+            font-size: 11px;
+            color: var(--muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        .card .tg {
+            display: flex;
+            gap: 4px;
+            margin-top: 4px;
+            flex-wrap: wrap
+        }
+
+        .tg span {
+            font-size: 9px;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-weight: 600
+        }
+
+        .seg {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            z-index: 2;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #fff
+        }
+
+        .pvp {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            z-index: 2;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            background: rgba(0, 0, 0, .7);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, .2);
+            opacity: 0;
+            transition: opacity .15s
+        }
+
+        .card:hover .pvp {
+            opacity: 1
+        }
+
+        .sa {
+            background: var(--purple)
+        }
+
+        .sb1 {
+            background: var(--blue)
+        }
+
+        .sb2 {
+            background: var(--cyan)
+        }
+
+        .sc1 {
+            background: var(--green)
+        }
+
+        .sc2 {
+            background: var(--yellow);
+            color: #000
+        }
+
+        .se {
+            background: var(--gray)
+        }
+
+        .tz {
+            background: rgba(239, 68, 68, .2);
+            color: var(--red);
+            border: 1px solid rgba(239, 68, 68, .3)
+        }
+
+        .tn {
+            background: rgba(107, 114, 128, .2);
+            color: var(--gray);
+            border: 1px solid rgba(107, 114, 128, .3)
+        }
+
+        .ts {
+            background: rgba(251, 191, 36, .2);
+            color: var(--gold);
+            border: 1px solid rgba(251, 191, 36, .3)
+        }
+
+        .tns {
+            background: rgba(107, 114, 128, .2);
+            color: var(--gray);
+            border: 1px solid rgba(107, 114, 128, .3)
+        }
+
+        .tr {
+            background: rgba(168, 85, 247, .2);
+            color: var(--purple);
+            border: 1px solid rgba(168, 85, 247, .3)
+        }
+
+        .tnr {
+            background: rgba(107, 114, 128, .2);
+            color: var(--gray);
+            border: 1px solid rgba(107, 114, 128, .3)
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100
+        }
+
+        .modal.on {
+            display: flex
+        }
+
+        .modal .mc {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 90vw;
+            max-height: 90vh
+        }
+
+        .modal .mc img {
+            max-width: 100%;
+            max-height: 60vh;
+            border-radius: 8px
+        }
+
+        .modal .close {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 102
+        }
+
+        .modal .ov {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+            z-index: 101
+        }
+
+        .modal .ov .seg-lg {
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            display: inline-block;
+            width: fit-content
+        }
+
+        .modal .ov .pvp-lg {
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            background: rgba(0, 0, 0, .8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, .3);
+            display: inline-block;
+            width: fit-content
+        }
+
+        .modal .ov .tg-lg {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: center
+        }
+
+        .modal .ov .tg-lg span {
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 600
+        }
+
+        .modal .ref {
+            margin-top: 12px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        .modal .ref .rl {
+            font-size: 10px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px
+        }
+
+        .modal .ref img {
+            height: 80px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            object-fit: contain;
+            background: #111
+        }
+
+        .segdef {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px
+        }
+
+        .segdef>div {
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border)
+        }
+
+        .segdef h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px
+        }
+
+        .segdef ul {
+            font-size: 12px;
+            color: var(--muted);
+            list-style: none
+        }
+
+        .segdef li {
+            margin-bottom: 4px
+        }
+
+        .segdef .refs {
+            margin-top: 10px;
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap
+        }
+
+        .segdef .refs img {
+            height: 50px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            object-fit: contain;
+            background: #111;
+            cursor: pointer;
+            transition: transform .15s
+        }
+
+        .segdef .refs img:hover {
+            transform: scale(1.05)
+        }
+
+        .segdef .refs .more {
+            height: 50px;
+            padding: 0 8px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--muted);
+            font-size: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .segdef .refs .more:hover {
+            background: var(--border)
+        }
+
+        .refmodal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 200
+        }
+
+        .refmodal.on {
+            display: flex
+        }
+
+        .refmodal .rc {
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px
+        }
+
+        .refmodal .rh {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff
+        }
+
+        .refmodal .rg {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center
+        }
+
+        .refmodal .rg img {
+            max-height: 70vh;
+            max-width: 45vw;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            object-fit: contain;
+            background: #111
+        }
+
+        .refmodal .close {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 201
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="hdr">
+            <h1>SBA BibleCover</h1>
+            <input type="text" id="s" placeholder="Buscar...">
+        </div>
+        <div class="leg">
+            <span class="sa" onclick="fs('A')" id="fA">A Tritono<span class="count" id="cA"></span></span>
+            <span class="sb1" onclick="fs('B1')" id="fB1">B1 Bitono 1<span class="count" id="cB1"></span></span>
+            <span class="sb2" onclick="fs('B2')" id="fB2">B2 Arte<span class="count" id="cB2"></span></span>
+            <span class="sc1" onclick="fs('C1')" id="fC1">C1 GE<span class="count" id="cC1"></span></span>
+            <span class="sc2" onclick="fs('D')" id="fD">D GC<span class="count" id="cD"></span></span>
+            <span class="se" onclick="fs('E')" id="fE">E GI<span class="count" id="cE"></span></span>
+        </div>
+        <div class="tabs">
+            <button class="on" onclick="t('p')">Producidas</button>
+            <button onclick="t('d')">Segmentos</button>
+        </div>
+        <div id="p"></div>
+        <div id="d" style="display:none">
+            <div class="segdef">
+                <div style="border-color:var(--purple)">
+                    <div class="seg sa" style="position:static;margin-bottom:8px">A</div>
+                    <h3>Tritono</h3>
+                    <ul>
+                        <li>3 cueros/PU</li>
+                        <li>Cierre: Sí</li>
+                        <li>Diseño: Elaborado</li>
+                        <li>Hot Stamping: Sí</li>
+                        <li>Relieve: Baixo relevo</li>
+                    </ul>
+                    <div class="refs" id="refsA"></div>
+                </div>
+                <div style="border-color:var(--blue)">
+                    <div class="seg sb1" style="position:static;margin-bottom:8px">B1</div>
+                    <h3>Bitono Tipo 1</h3>
+                    <ul>
+                        <li>2 cueros/PU</li>
+                        <li>Cierre: Sí</li>
+                        <li>Diseño: Semi-Elaborado</li>
+                        <li>Hot Stamping: Sí</li>
+                        <li>Relieve: Variable</li>
+                    </ul>
+                    <div class="refs" id="refsB1"></div>
+                </div>
+                <div style="border-color:var(--cyan)">
+                    <div class="seg sb2" style="position:static;margin-bottom:8px">B2</div>
+                    <h3>Arte - Diseño ARTE (4:4 cores)</h3>
+                    <ul>
+                        <li>2 cueros/PU</li>
+                        <li>Cierre: Sí</li>
+                        <li>Diseño: ARTE (4:4 cores)</li>
+                        <li>Hot Stamping: Sí</li>
+                        <li>Relieve: Variable</li>
+                    </ul>
+                    <div class="refs" id="refsB2"></div>
+                </div>
+                <div style="border-color:var(--green)">
+                    <div class="seg sc1" style="position:static;margin-bottom:8px">C1</div>
+                    <h3>GE Letra Grande</h3>
+                    <ul>
+                        <li>1 cuero/PU</li>
+                        <li>Cierre: Sí</li>
+                        <li>Diseño: Tipográfico</li>
+                        <li>Hot Stamping: Letra Grande</li>
+                        <li>Relieve: Baixo relevo</li>
+                    </ul>
+                    <div class="refs" id="refsC1"></div>
+                </div>
+                <div style="border-color:var(--yellow)">
+                    <div class="seg sc2" style="position:static;margin-bottom:8px">D</div>
+                    <h3>GC Canto Dorado</h3>
+                    <ul>
+                        <li>1 cuero/PU</li>
+                        <li>Cierre: No</li>
+                        <li>Diseño: Decorativo</li>
+                        <li>Hot Stamping: Canto Dorado</li>
+                        <li>Relieve: Baixo relevo</li>
+                    </ul>
+                    <div class="refs" id="refsD"></div>
+                </div>
+                <div style="border-color:var(--gray)">
+                    <div class="seg se" style="position:static;margin-bottom:8px">E</div>
+                    <h3>GI Vinilo Económico</h3>
+                    <ul>
+                        <li>Vinilo</li>
+                        <li>Cierre: No</li>
+                        <li>Diseño: Simple</li>
+                        <li>Hot Stamping: No</li>
+                        <li>Relieve: No</li>
+                    </ul>
+                    <div class="refs" id="refsE"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="m" onclick="if(event.target===this)cm()">
+        <button class="close" onclick="cm()">×</button>
+        <div class="ov" id="mov"></div>
+        <div class="mc">
+            <img id="mi" src="">
+            <div class="ref" id="mref"></div>
+        </div>
+    </div>
+    <div class="refmodal" id="rm" onclick="if(event.target===this)crm()">
+        <button class="close" onclick="crm()">×</button>
+        <div class="rc">
+            <div class="rh" id="rmh"></div>
+            <div class="rg" id="rmg"></div>
+        </div>
+    </div>
+    <script>
+        var D = [
+            { n: 1, s: "A", z: 1, h: 1, r: 1 }, { n: 2, s: "B1", z: 1, h: 1, r: 0 }, { n: 3, s: "B2", z: 1, h: 1, r: 1 }, { n: 4, s: "C1", z: 1, h: 1, r: 1 },
+            { n: 5, s: "A", z: 1, h: 1, r: 1 }, { n: 6, s: "B1", z: 1, h: 1, r: 0 }, { n: 7, s: "D", z: 0, h: 1, r: 1 }, { n: 8, s: "B2", z: 1, h: 1, r: 0 },
+            { n: 9, s: "E", z: 0, h: 0, r: 0 }, { n: 10, s: "B1", z: 1, h: 1, r: 1 }, { n: 11, s: "A", z: 1, h: 1, r: 1 }, { n: 12, s: "C1", z: 1, h: 1, r: 1 },
+            { n: 13, s: "B2", z: 1, h: 1, r: 1 }, { n: 14, s: "A", z: 1, h: 1, r: 1 }, { n: 15, s: "D", z: 0, h: 1, r: 1 }, { n: 16, s: "B1", z: 1, h: 1, r: 0 },
+            { n: 17, s: "E", z: 0, h: 0, r: 0 }, { n: 18, s: "A", z: 1, h: 1, r: 1 }, { n: 19, s: "B2", z: 1, h: 1, r: 0 }, { n: 20, s: "C1", z: 1, h: 1, r: 1 },
+            { n: 21, s: "B1", z: 1, h: 1, r: 1 }, { n: 22, s: "A", z: 1, h: 1, r: 1 }, { n: 23, s: "E", z: 0, h: 0, r: 0 }, { n: 24, s: "A", z: 1, h: 1, r: 1 },
+            { n: 25, s: "B1", z: 1, h: 1, r: 0 }, { n: 26, s: "B2", z: 1, h: 1, r: 1 }, { n: 27, s: "C1", z: 1, h: 1, r: 1 }, { n: 28, s: "A", z: 1, h: 1, r: 1 },
+            { n: 29, s: "B2", z: 1, h: 1, r: 1 }, { n: 30, s: "B2", z: 1, h: 1, r: 1 }, { n: 31, s: "B2", z: 1, h: 1, r: 1 }, { n: 32, s: "B2", z: 1, h: 1, r: 1 },
+            { n: 33, s: "B2", z: 1, h: 1, r: 0 }, { n: 34, s: "B2", z: 1, h: 1, r: 1 }, { n: 35, s: "B2", z: 1, h: 1, r: 1 }, { n: 36, s: "B2", z: 1, h: 1, r: 0 },
+            { n: 37, s: "B2", z: 1, h: 1, r: 1 }, { n: 38, s: "B2", z: 1, h: 1, r: 1 }, { n: 39, s: "B2", z: 1, h: 1, r: 1 }, { n: 40, s: "B2", z: 1, h: 1, r: 1 },
+            { n: 41, s: "B2", z: 1, h: 1, r: 1 }, { n: 42, s: "A", z: 1, h: 1, r: 1 }, { n: 43, s: "B1", z: 1, h: 1, r: 0 }, { n: 44, s: "B2", z: 1, h: 1, r: 1 },
+            { n: 45, s: "C1", z: 1, h: 1, r: 1 }, { n: 46, s: "A", z: 1, h: 1, r: 1 }, { n: 47, s: "B1", z: 1, h: 1, r: 0 }, { n: 48, s: "D", z: 0, h: 1, r: 1 },
+            { n: 49, s: "B2", z: 1, h: 1, r: 0 }, { n: 50, s: "E", z: 0, h: 0, r: 0 }, { n: 51, s: "B1", z: 1, h: 1, r: 1 }, { n: 52, s: "A", z: 1, h: 1, r: 1 },
+            { n: 53, s: "C1", z: 1, h: 1, r: 1 }, { n: 54, s: "B2", z: 1, h: 1, r: 1 }, { n: 55, s: "A", z: 1, h: 1, r: 1 }, { n: 56, s: "D", z: 0, h: 1, r: 1 },
+            { n: 57, s: "B1", z: 1, h: 1, r: 0 }, { n: 58, s: "E", z: 0, h: 0, r: 0 }, { n: 60, s: "A", z: 1, h: 1, r: 1 }, { n: 61, s: "B1", z: 1, h: 1, r: 1 },
+            { n: 62, s: "B2", z: 1, h: 1, r: 0 }, { n: 63, s: "C1", z: 1, h: 1, r: 1 }
+        ];
+        var SN = { A: "Tritono", B1: "Bitono 1", B2: "Arte", C1: "GE Letra Grande", D: "GC Canto Dorado", E: "Vinilo Económico" };
+        var SC = { A: "sa", B1: "sb1", B2: "sb2", C1: "sc1", D: "sc2", E: "se" };
+        var PV = { A: "AR$ 52.000", B1: "AR$ 47.000", B2: "AR$ 47.000", C1: "AR$ 44.000", D: "AR$ 35.000", E: "AR$ 33.000" };
+        var RF = {
+            A: ["page_9_img_3_xref_97.png", "page_10_img_3_xref_106.png", "page_12_img_3_xref_123.png"],
+            B1: ["page_9_img_4_xref_98.png", "page_10_img_4_xref_107.png", "page_13_img_3_xref_133.png"],
+            B2: ["page_9_img_3_xref_97.png", "page_9_img_4_xref_98.png", "page_13_img_4_xref_134.png"],
+            C1: ["page_10_img_3_xref_106.png", "page_10_img_4_xref_107.png", "page_13_img_5_xref_135.png"],
+            D: ["page_11_img_3_xref_115.png", "page_12_img_3_xref_123.png", "page_12_img_4_xref_124.png"],
+            E: ["page_12_img_4_xref_124.png", "page_12_img_5_xref_125.png", "page_13_img_3_xref_133.png"]
+        };
+        var CF = null;
+        function fs(s) {
+            CF = CF === s ? null : s;
+            document.querySelectorAll(".leg span").forEach(function (b) { b.classList.remove("on") });
+            if (CF) document.getElementById("f" + CF).classList.add("on");
+            UC(); R();
+        }
+        function UC() {
+            var c = { A: 0, B1: 0, B2: 0, C1: 0, D: 0, E: 0 };
+            D.forEach(function (d) { c[d.s]++ });
+            for (var k in c) document.getElementById("c" + k).textContent = c[k];
+        }
+        function R() {
+            var h = "", q = document.getElementById("s").value.toLowerCase(), ct = 0;
+            D.forEach(function (d) {
+                var fn = "tapa-biblia_-" + d.n + ".jpg";
+                if (CF && d.s !== CF) return;
+                if (q && !fn.toLowerCase().includes(q) && !d.s.toLowerCase().includes(q)) return;
+                ct++;
+                var tz = d.z ? "CIERRE" : "SIN CIERRE", tc = d.z ? "tz" : "tn";
+                var ts = d.h ? "STAMP" : "SIN STAMP", tsc = d.h ? "ts" : "tns";
+                h += '<div class="card" onclick="om(\'' + fn + '\',\'' + d.s + '\',' + d.z + ',' + d.h + ',' + d.r + ')">';
+                h += '<span class="seg ' + SC[d.s] + '">' + d.s + '</span>';
+                h += '<span class="pvp">' + PV[d.s] + '</span>';
+                h += '<img src="Produzidas/' + encodeURIComponent(fn) + '" loading="lazy">';
+                h += '<div class="inf"><div class="nm">' + fn.replace(/\.(jpg|png)$/, "") + '</div>';
+                h += '<div class="tg"><span class="' + tc + '">' + tz + '</span>';
+                h += '<span class="' + tsc + '">' + ts + '</span>';
+                h += '<span class="' + (d.r ? "tr" : "tnr") + '">' + (d.r ? "RELIEVE" : "SIN RELIEVE") + '</span></div></div></div>';
+            });
+            document.getElementById("p").innerHTML = '<div class="grid">' + h + '</div>';
+            document.querySelector(".tabs button").textContent = "Producidas (" + ct + ")";
+        }
+        function t(x) {
+            var btns = document.querySelectorAll(".tabs button");
+            btns[0].className = x === "p" ? "on" : "";
+            btns[1].className = x === "d" ? "on" : "";
+            document.getElementById("p").style.display = x === "p" ? "" : "none";
+            document.getElementById("d").style.display = x === "d" ? "" : "none";
+        }
+        function om(fn, s, z, h, r) {
+            document.getElementById("mi").src = "Produzidas/" + encodeURIComponent(fn);
+            var tz = z ? "CIERRE" : "SIN CIERRE", tc = z ? "tz" : "tn";
+            var ts = h ? "STAMP" : "SIN STAMP", tsc = h ? "ts" : "tns";
+            var tr = r ? "RELIEVE" : "SIN RELIEVE", trc = r ? "tr" : "tnr";
+            var ov = '<span class="seg-lg ' + SC[s] + '">' + s + ' - ' + SN[s] + '</span>';
+            ov += '<span class="pvp-lg">' + PV[s] + '</span>';
+            ov += '<div class="tg-lg"><span class="' + tc + '">' + tz + '</span><span class="' + tsc + '">' + ts + '</span><span class="' + trc + '">' + tr + '</span></div>';
+            document.getElementById("mov").innerHTML = ov;
+            var refs = RF[s] || [];
+            var rh = '<span class="rl">Referencia:</span>';
+            refs.forEach(function (r) { rh += '<img src="extracted_temp/' + encodeURIComponent(r) + '" loading="lazy">'; });
+            document.getElementById("mref").innerHTML = rh;
+            document.getElementById("m").classList.add("on");
+        }
+        function cm() { document.getElementById("m").classList.remove("on") }
+        function crm() { document.getElementById("rm").classList.remove("on") }
+        function orm(s) {
+            var refs = RF[s] || [];
+            var h = '';
+            refs.forEach(function (r) { h += '<img src="extracted_temp/' + encodeURIComponent(r) + '" loading="lazy">'; });
+            document.getElementById("rmg").innerHTML = h;
+            document.getElementById("rmh").textContent = s + ' - ' + SN[s] + ' - Referencias';
+            document.getElementById("rm").classList.add("on");
+        }
+        function loadRefs() {
+            var segs = ["A", "B1", "B2", "C1", "D", "E"];
+            segs.forEach(function (s) {
+                var refs = RF[s] || [];
+                var el = document.getElementById("refs" + s);
+                if (!el) return;
+                var h = '';
+                var show = refs.slice(0, 2);
+                show.forEach(function (r) { h += '<img src="extracted_temp/' + encodeURIComponent(r) + '" loading="lazy" onclick="orm(\'' + s + '\')">'; });
+                if (refs.length > 2) h += '<div class="more" onclick="orm(\'' + s + '\')">' + '+' + (refs.length - 2) + ' más</div>';
+                el.innerHTML = h;
+            });
+        }
+        document.getElementById("s").addEventListener("input", R);
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape") { cm(); crm(); } });
+        UC(); R(); loadRefs();
+    </script>
+</body>
+
+</html>
