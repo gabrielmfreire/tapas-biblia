@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Recursos Diseño - SBA BibleCover</title>
+    <style>
+        :root {
+            --bg: #0a0a0b;
+            --text: #fafafa;
+            --muted: #a1a1aa;
+            --border: #27272a;
+            --hover: #1a1a1d;
+            --blue: #2eaadc;
+            --purple: #a855f7;
+            --green: #22c55e;
+            --red: #ef4444;
+            --yellow: #eab308;
+            --gray: #71717a;
+            --card: #141416;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 96px;
+            min-height: 100vh
+        }
+
+        .header {
+            margin-bottom: 40px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px
+        }
+
+        .header .home-btn {
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.15s;
+            white-space: nowrap;
+            flex-shrink: 0
+        }
+
+        .header .home-btn:hover { background: var(--hover) }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 8px
+        }
+
+        .header .subtitle {
+            font-size: 16px;
+            color: var(--muted)
+        }
+
+        .section { margin-bottom: 48px }
+
+        .section h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .section h2 .icon { font-size: 20px }
+
+        .callout {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            gap: 12px
+        }
+
+        .callout .emoji { font-size: 20px; flex-shrink: 0 }
+
+        .callout .content { flex: 1 }
+
+        .callout .content strong {
+            display: block;
+            margin-bottom: 4px
+        }
+
+        .callout .content span {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.5
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 32px 0
+        }
+
+        .toggle { margin-bottom: 8px }
+
+        .toggle-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 10px 12px;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: background 0.15s
+        }
+
+        .toggle-header:hover { background: var(--hover) }
+
+        .toggle-header .arrow {
+            transition: transform 0.2s;
+            font-size: 12px
+        }
+
+        .toggle-header.open .arrow { transform: rotate(90deg) }
+
+        .toggle-content {
+            padding-left: 24px;
+            display: none;
+            border-left: 2px solid var(--border);
+            margin-left: 6px;
+            margin-top: 4px;
+            padding-bottom: 8px
+        }
+
+        .toggle-content.open { display: block }
+
+        .topic-text {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.6;
+            padding: 8px 0
+        }
+
+        .ref-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 10px;
+            padding: 8px 0
+        }
+
+        .ref-grid img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: contain;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.15s, border-color 0.15s
+        }
+
+        .ref-grid img:hover {
+            transform: scale(1.03);
+            border-color: var(--muted)
+        }
+
+        .ref-count {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 12px
+        }
+
+        .font-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 24px;
+            width: 70vw;
+            margin-left: calc(50% - 35vw);
+            position: relative;
+            text-align: center
+        }
+
+        .font-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px
+        }
+
+        .font-card p {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 16px
+        }
+
+        .font-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center
+        }
+
+        .font-grid img {
+            width: calc(7% - 4px);
+            min-width: 60px;
+            object-fit: contain;
+            background: #111;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 4px
+        }
+
+        .seg-dist {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px
+        }
+
+        .seg-dist-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden
+        }
+
+        .seg-dist-header {
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+            transition: filter 0.15s
+        }
+
+        .seg-dist-header:hover {
+            filter: brightness(1.2)
+        }
+
+        .seg-dist-body {
+            padding: 12px
+        }
+
+        .seg-dist-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px
+        }
+
+        .seg-dist-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 10px;
+            text-align: center
+        }
+
+        .seg-dist-total {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 4px
+        }
+
+        .seg-dist-hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 6px 0
+        }
+
+        .seg-dist-pct {
+            font-size: 22px;
+            font-weight: 700
+        }
+
+        .seg-dist-tag {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600
+        }
+
+        .seg-dist-tag.fem {
+            background: rgba(236,72,153,.2);
+            color: #ec4899
+        }
+
+        .seg-dist-tag.uni {
+            background: rgba(113,113,122,.2);
+            color: #a1a1aa
+        }
+
+        .seg-dist-tag.masc {
+            background: rgba(59,130,246,.2);
+            color: #3b82f6
+        }
+
+        .refs-popup {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,.5)
+        }
+
+        .refs-popup.on {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            max-width: 400px
+        }
+
+        .refs-popup img {
+            height: 120px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            object-fit: contain;
+            background: #111
+        }
+
+        @media (max-width: 768px) {
+            .seg-dist { grid-template-columns: repeat(2, 1fr) }
+        }
+
+        .zoom-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.92);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            flex-direction: column;
+            gap: 16px
+        }
+
+        .zoom-modal.on { display: flex }
+
+        .zoom-modal img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px
+        }
+
+        .zoom-modal .zoom-close {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 201
+        }
+
+        .zoom-modal .zoom-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 201;
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            color: #fff;
+            transition: background .15s
+        }
+
+        .zoom-modal .zoom-nav:hover { background: rgba(255,255,255,.25) }
+
+        .zoom-modal .zoom-nav.prev { left: 16px }
+        .zoom-modal .zoom-nav.next { right: 16px }
+
+        .zoom-modal .zoom-counter {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        .back-btn {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 10px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.2s;
+            text-decoration: none
+        }
+
+        .back-btn:hover { opacity: 0.8 }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px }
+            .header h1 { font-size: 28px }
+            .ref-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)) }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1>Recursos Diseño</h1>
+                <p class="subtitle">Guía de recomendaciones para producción de estampas</p>
+            </div>
+            <a href="index.html" class="home-btn">&#8592; Inicio</a>
+        </div>
+
+        <div class="callout">
+            <div class="emoji">&#9888;&#65039;</div>
+            <div class="content">
+                <strong>Importante</strong>
+                <span>Este documento contiene las recomendaciones y especificaciones para la producción de tapas de Biblias. Por favor, revisar cada tópico cuidadosamente antes de iniciar cualquier trabajo.</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>&#128221; Guía de Recomendaciones para Producción de Estampas</h2>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="toggleSection(this)">
+                    <span class="arrow">&#9654;</span>
+                    <span><strong>Logo Reina Valera 1960</strong></span>
+                </div>
+                <div class="toggle-content">
+                    <p class="topic-text">En todos los diseños de biblias, es obligatorio incluir y utilizar el logo de "Reina Valera 1960". Este debe estar marcado claramente en cada una de las piezas.</p>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="toggleSection(this)">
+                    <span class="arrow">&#9654;</span>
+                    <span><strong>Escritura de "Santa Biblia"</strong></span>
+                </div>
+                <div class="toggle-content">
+                    <p class="topic-text">La denominación siempre debe escribirse con la "S" de Santa y la "B" de Biblia en mayúsculas (Santa Biblia). En fuentes que no distingan entre mayúsculas y minúsculas, se mantiene el estándar, pero en las tipografías que sí tengan diferenciación, el uso de las mayúsculas en ambas palabras es obligatorio.</p>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="toggleSection(this)">
+                    <span class="arrow">&#9654;</span>
+                    <span><strong>Segmentación y Cantidades Estrictas</strong></span>
+                </div>
+                <div class="toggle-content">
+                    <p class="topic-text">Se deben respetar rigurosamente las segmentaciones y los porcentajes de cantidades definidos. Por ejemplo, si una segmentación requiere el 20% de la producción total, esa proporción debe cumplirse con exactitud en la cantidad de diseños entregados.</p>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="toggleSection(this)">
+                    <span class="arrow">&#9654;</span>
+                    <span><strong>Fidelidad a las Referencias del Cliente</strong></span>
+                </div>
+                <div class="toggle-content">
+                    <p class="topic-text">Es fundamental seguir estrictamente las referencias visuales dadas por el cliente. Las variaciones deben realizarse a partir de esas bases, ya sea ajustando el color, el estilo o la diagramación del uso del cuero, pero siempre manteniendo la esencia de lo solicitado.</p>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="toggleSection(this)">
+                    <span class="arrow">&#9654;</span>
+                    <span><strong>Nomenclatura Técnica Detallada</strong></span>
+                </div>
+                <div class="toggle-content">
+                    <p class="topic-text">En la descripción del nombre de cada archivo o biblia, se debe incluir una explicación técnica clara. Debe especificarse si el diseño cuenta con relieve (relevé), si incluye hot stamping o cualquier otra variación técnica relevante.</p>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="toggleSection(this)">
+                    <span class="arrow">&#9654;</span>
+                    <span><strong>Variaciones de Diagramación y Cuero</strong></span>
+                </div>
+                <div class="toggle-content">
+                    <p class="topic-text">Está permitido realizar variaciones del mismo diseño cambiando la disposición de los materiales. Por ejemplo, se puede proponer una versión con una franja vertical de cuero del 20% y otra con esa misma franja en formato horizontal (en el pie de página o cabezal), manteniendo el equilibrio con el diseño pleno.</p>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="toggleSection(this)">
+                    <span class="arrow">&#9654;</span>
+                    <span><strong>Paleta de Colores Masculinos (Sin Marrones)</strong></span>
+                </div>
+                <div class="toggle-content">
+                    <p class="topic-text">Se deben evitar los tonos marrones en diseños para hombres. La prioridad absoluta son el negro y el azul oscuro o azul royal. Estos deben ser los colores base predominantes.</p>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="toggleSection(this)">
+                    <span class="arrow">&#9654;</span>
+                    <span><strong>Paleta de Colores Femeninos (Tonos Claros y Plenos)</strong></span>
+                </div>
+                <div class="toggle-content">
+                    <p class="topic-text">Para el público femenino, también se debe evitar el marrón. Se debe priorizar el uso de colores plenos y vibrantes como el azul claro, turquesa, rosa o violeta claro. Es fundamental evitar colores muy oscuros o "cerrados", como un púrpura demasiado profundo.</p>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="toggleSection(this)">
+                    <span class="arrow">&#9654;</span>
+                    <span><strong>Cruce de Referencias y Enfoque Estricto</strong></span>
+                </div>
+                <div class="toggle-content">
+                    <p class="topic-text">Se deben cruzar las referencias de la pestaña de "diseño" con las biblias preseleccionadas en la Home. El enfoque debe ser estrictamente sobre estas referencias establecidas; en esta etapa, no se aceptarán diseños que estén por fuera de este marco.</p>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="toggleSection(this)">
+                    <span class="arrow">&#9654;</span>
+                    <span><strong>Diferenciación Visual (Evitar el "Copy-Paste")</strong></span>
+                </div>
+                <div class="toggle-content">
+                    <p class="topic-text">Si se utiliza una referencia como base, se debe evitar el uso de fuentes muy similares a la original. No se busca una réplica exacta: se deben variar las combinaciones de colores (por ejemplo, si la referencia usa guarda marrón y cuerpo violeta, nosotros debemos proponer algo distinto) para asegurar que el diseño sea una versión nueva.</p>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="toggleSection(this)">
+                    <span class="arrow">&#9654;</span>
+                    <span><strong>Organización y Archivos No Destructivos</strong></span>
+                </div>
+                <div class="toggle-content">
+                    <p class="topic-text">Los archivos de Photoshop deben estar perfectamente organizados, sin capas rasterizadas. El diseño debe ser totalmente editable y "no destructivo". Si se utiliza un mockup base, las estampas y capas internas deben estar estructuradas de forma clara y lógica.</p>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="toggleSection(this)">
+                    <span class="arrow">&#9654;</span>
+                    <span><strong>Uso de Vectores y Carpeta de Materiales</strong></span>
+                </div>
+                <div class="toggle-content">
+                    <p class="topic-text">Cualquier elemento gráfico o textura debe ser, preferentemente, un vector o SVG. Todos los elementos externos utilizados deben guardarse en una carpeta llamada "material" dentro de la raíz del proyecto.</p>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="toggleSection(this)">
+                    <span class="arrow">&#9654;</span>
+                    <span><strong>Gestión de Tipografías Externas</strong></span>
+                </div>
+                <div class="toggle-content">
+                    <p class="topic-text">Si se utiliza una fuente que no es estándar, el archivo de dicha tipografía debe incluirse en la carpeta "material", especificando claramente a qué estampa corresponde para evitar errores en la edición futura.</p>
+                </div>
+            </div>
+
+            <div class="toggle">
+                <div class="toggle-header" onclick="toggleSection(this)">
+                    <span class="arrow">&#9654;</span>
+                    <span><strong>Diversidad Visual por Categoría</strong></span>
+                </div>
+                <div class="toggle-content">
+                    <p class="topic-text">Se debe evitar producir más de dos diseños similares dentro de la misma categoría (ej. categoría B2). Es necesario variar las posiciones y formatos de los elementos para asegurar una colección diversa, siempre respetando los porcentajes de producción por segmento.</p>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="section">
+            <div class="font-card">
+                <h3>&#127912; Guía Tipográfica de Apoyo</h3>
+                <p>Fuentes preseleccionadas para mantener la coherencia del proyecto. No es un límite absoluto, pero deben utilizarse como base principal o ante cualquier duda sobre qué tipografía aplicar.</p>
+                <div class="font-grid">
+                    <img src="FontsRef/SantaBiblia (1).png" loading="lazy">
+                    <img src="FontsRef/SantaBiblia (2).png" loading="lazy">
+                    <img src="FontsRef/SantaBiblia (3).png" loading="lazy">
+                    <img src="FontsRef/SantaBiblia (4).png" loading="lazy">
+                    <img src="FontsRef/SantaBiblia (5).png" loading="lazy">
+                    <img src="FontsRef/SantaBiblia (6).png" loading="lazy">
+                    <img src="FontsRef/SantaBiblia (7).png" loading="lazy">
+                    <img src="FontsRef/SantaBiblia (8).png" loading="lazy">
+                    <img src="FontsRef/SantaBiblia (9).png" loading="lazy">
+                    <img src="FontsRef/SantaBiblia (10).png" loading="lazy">
+                    <img src="FontsRef/SantaBiblia (11).png" loading="lazy">
+                    <img src="FontsRef/SantaBiblia (12).png" loading="lazy">
+                </div>
+                <a href="FontsRef/Fuentes.zip" download style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;background:var(--text);color:var(--bg);padding:8px 16px;border-radius:4px;text-decoration:none;font-size:13px;font-weight:500;transition:opacity .15s">&#11015; Descargar Fuentes (.zip)</a>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="section">
+            <h2>&#128202; Distribución de Diseños por Segmento</h2>
+            <p style="font-size:14px;color:var(--muted);margin-bottom:16px"><strong style="color:var(--text)">Total: 23 diseños</strong></p>
+            <div class="seg-dist">
+                <div class="seg-dist-card">
+                    <div class="seg-dist-header" style="background:var(--purple)" onmouseenter="showRefs(event,'A')" onmouseleave="hideRefs()">
+                        <span>A</span>
+                    </div>
+                    <div class="seg-dist-body">
+                        <div class="seg-dist-items">
+                            <span class="seg-dist-tag fem">&#9792; 2 Femenino</span>
+                            <span class="seg-dist-tag masc">&#9794; 1 Masculino</span>
+                        </div>
+                        <div class="seg-dist-bottom">
+                            <span class="seg-dist-total">3 diseños</span>
+                            <hr class="seg-dist-hr">
+                            <span class="seg-dist-pct">13%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="seg-dist-card">
+                    <div class="seg-dist-header" style="background:var(--blue)" onmouseenter="showRefs(event,'B')" onmouseleave="hideRefs()">
+                        <span>B</span>
+                    </div>
+                    <div class="seg-dist-body">
+                        <div class="seg-dist-items">
+                            <span class="seg-dist-tag fem">&#9792; 2 Femenino</span>
+                            <span class="seg-dist-tag uni">&#9778; 1 Unisex</span>
+                            <span class="seg-dist-tag masc">&#9794; 1 Masculino</span>
+                        </div>
+                        <div class="seg-dist-bottom">
+                            <span class="seg-dist-total">4 diseños</span>
+                            <hr class="seg-dist-hr">
+                            <span class="seg-dist-pct">17%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="seg-dist-card">
+                    <div class="seg-dist-header" style="background:var(--cyan)" onmouseenter="showRefs(event,'C')" onmouseleave="hideRefs()">
+                        <span>C</span>
+                    </div>
+                    <div class="seg-dist-body">
+                        <div class="seg-dist-items">
+                            <span class="seg-dist-tag fem">&#9792; 4 Femenino</span>
+                            <span class="seg-dist-tag uni">&#9778; 1 Unisex</span>
+                            <span class="seg-dist-tag masc">&#9794; 1 Masculino</span>
+                        </div>
+                        <div class="seg-dist-bottom">
+                            <span class="seg-dist-total">6 diseños</span>
+                            <hr class="seg-dist-hr">
+                            <span class="seg-dist-pct">26%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="seg-dist-card">
+                    <div class="seg-dist-header" style="background:var(--yellow);color:#000" onmouseenter="showRefs(event,'D')" onmouseleave="hideRefs()">
+                        <span>D</span>
+                    </div>
+                    <div class="seg-dist-body">
+                        <div class="seg-dist-items">
+                            <span class="seg-dist-tag fem">&#9792; 3 Femenino</span>
+                            <span class="seg-dist-tag uni">&#9778; 1 Unisex</span>
+                            <span class="seg-dist-tag masc">&#9794; 1 Masculino</span>
+                        </div>
+                        <div class="seg-dist-bottom">
+                            <span class="seg-dist-total">5 diseños</span>
+                            <hr class="seg-dist-hr">
+                            <span class="seg-dist-pct">22%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="seg-dist-card">
+                    <div class="seg-dist-header" style="background:var(--gray)" onmouseenter="showRefs(event,'E')" onmouseleave="hideRefs()">
+                        <span>E</span>
+                    </div>
+                    <div class="seg-dist-body">
+                        <div class="seg-dist-items">
+                            <span class="seg-dist-tag fem">&#9792; 2 Femenino</span>
+                            <span class="seg-dist-tag uni">&#9778; 2 Unisex</span>
+                            <span class="seg-dist-tag masc">&#9794; 1 Masculino</span>
+                        </div>
+                        <div class="seg-dist-bottom">
+                            <span class="seg-dist-total">5 diseños</span>
+                            <hr class="seg-dist-hr">
+                            <span class="seg-dist-pct">22%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="refs-popup" id="refsPopup"></div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="section">
+            <h2>&#128444;&#65039; Referencias de la Competencia</h2>
+            <p class="ref-count" id="refCount"></p>
+            <div class="ref-grid" id="refGrid"></div>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-btn">&#8592; Volver al catálogo</a>
+
+    <div class="zoom-modal" id="zoomModal" onclick="if(event.target===this)closeZoom()">
+        <button class="zoom-close" onclick="closeZoom()">&#10005;</button>
+        <div class="zoom-nav prev" onclick="navZoom(-1)">&#10094;</div>
+        <div class="zoom-nav next" onclick="navZoom(1)">&#10095;</div>
+        <img id="zoomImg" src="">
+        <span class="zoom-counter" id="zoomCounter"></span>
+    </div>
+
+    <script>
+        var segRefs = {
+            A: ["page_9_img_3_xref_97.png", "page_10_img_3_xref_106.png", "page_12_img_3_xref_123.png"],
+            B: ["page_9_img_4_xref_98.png", "page_10_img_4_xref_107.png", "page_13_img_3_xref_133.png", "page_9_img_3_xref_97.png", "page_13_img_4_xref_134.png"],
+            C: ["page_10_img_3_xref_106.png", "page_10_img_4_xref_107.png", "page_13_img_5_xref_135.png"],
+            D: ["page_11_img_3_xref_115.png", "page_12_img_3_xref_123.png", "page_12_img_4_xref_124.png"],
+            E: ["page_12_img_4_xref_124.png", "page_12_img_5_xref_125.png", "page_13_img_3_xref_133.png"]
+        };
+
+        function showRefs(e, seg) {
+            var popup = document.getElementById('refsPopup');
+            var imgs = segRefs[seg] || [];
+            var h = '';
+            imgs.forEach(function(r) { h += '<img src="extracted_temp/' + r + '" loading="lazy">'; });
+            popup.innerHTML = h;
+            popup.classList.add('on');
+            var rect = e.target.getBoundingClientRect();
+            popup.style.left = Math.min(rect.left, window.innerWidth - 420) + 'px';
+            popup.style.top = (rect.bottom + 8) + 'px';
+        }
+
+        function hideRefs() {
+            document.getElementById('refsPopup').classList.remove('on');
+        }
+
+        var refImages = [
+            "biblia-rvr60-025czti-abba-classic-negro-negro-biblias-580.jpg",
+            "biblia-rvr60-065lg-czti-tricolor-azul-gris-marra-n-biblias-873.webp",
+            "biblia-rvr60-065lg-czti-tricolor-fantasa-a-marra-n-fantasa-a-cafa-c-biblias-537.webp",
+            "biblia-rvr60-068-czti-coleccia-n-iconic-negro-gris-gris-biblias-983.webp",
+            "biblia-rvr60-085czti-lgi-pjr-cafa-c-cafa-c-icthus-biblias-958.webp",
+            "biblia-rvr60-085czti-lgi-pjr-tricolor-marra-n-cafa-c-oscuro-cafa-c-claro-biblias-871.webp",
+            "biblia-rvr60-085czti-lgi-pjr-tricolor-negro-rosa-fucsia-biblias-208.webp",
+            "biblia-rvr60-085czti-lgi-pjr-tricolor-rosa-fucsia-lima-biblias-678.webp",
+            "biblia-rvr60-088cti-lsgi-cafe-geo-biblias-864.webp",
+            "biblia-rvr60-088cti-lsgi-turquesa-floral-biblias-959.webp",
+            "biblia-rvr60-088czti-lsgi-cafe-lila-biblias-304.webp",
+            "biblia-rvr60-088czti-lsgi-cafe-rosa-con-mariposas-biblias-642.webp",
+            "biblia-rvr60-088czti-lsgi-cp-jardin-lila-biblias-286.webp",
+            "biblia-rvr60-088czti-lsgi-tech-dot-negro-cafe-cafe-beige-biblias-251.webp",
+            "biblia-reina-valera-1960-de-bolsillo-imitacion-piel-negrogris-con-leon-cierre-e-indice-963.webp",
+            "biblia-reina-valera-1960-tamano-manual-letra-grande-12-puntos-imitacion-piel-735.webp",
+            "biblia-reina-valera-1960-tamano-manual-letra-grande-12-puntos-imitacion-piel-lilamorado-650.webp",
+            "biblia-reina-valera-1960-tamano-portatil-letra-grande-11-puntos-imitacion-piel-negrogris-413.webp",
+            "biblia-reina-valera-2020-tamano-manual-letra-grande-12-puntos-coleccion-tricolor-cafe-545.webp",
+            "biblia-rvr065lg-czti-pjr-inspiracion-marron-gris-azul-biblias-645.jpg",
+            "rvr60-095czti-lspg-pjr-tricolor-lila-morado-negro-biblias-441.webp"
+        ];
+
+        var zoomIdx = 0;
+
+        function renderRefs() {
+            var grid = document.getElementById('refGrid');
+            var h = '';
+            refImages.forEach(function(img, i) {
+                h += '<img src="Referencias/' + img + '" loading="lazy" onclick="openZoom(' + i + ')">';
+            });
+            grid.innerHTML = h;
+            document.getElementById('refCount').textContent = refImages.length + ' referencias de la competencia';
+        }
+
+        function openZoom(idx) {
+            zoomIdx = idx;
+            document.getElementById('zoomImg').src = 'Referencias/' + refImages[zoomIdx];
+            document.getElementById('zoomCounter').textContent = (zoomIdx + 1) + ' / ' + refImages.length;
+            document.getElementById('zoomModal').classList.add('on');
+        }
+
+        function closeZoom() {
+            document.getElementById('zoomModal').classList.remove('on');
+        }
+
+        function navZoom(dir) {
+            zoomIdx = (zoomIdx + dir + refImages.length) % refImages.length;
+            document.getElementById('zoomImg').src = 'Referencias/' + refImages[zoomIdx];
+            document.getElementById('zoomCounter').textContent = (zoomIdx + 1) + ' / ' + refImages.length;
+        }
+
+        function toggleSection(header) {
+            header.classList.toggle('open');
+            header.nextElementSibling.classList.toggle('open');
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeZoom();
+            if (document.getElementById('zoomModal').classList.contains('on')) {
+                if (e.key === 'ArrowLeft') navZoom(-1);
+                if (e.key === 'ArrowRight') navZoom(1);
+            }
+        });
+
+        renderRefs();
+    </script>
+</body>
+
+</html>

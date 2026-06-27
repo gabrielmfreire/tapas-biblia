@@ -54,51 +54,51 @@ Este informe documenta la clasificación de todas las tapas de Biblia del proyec
 
 ### Tapas de Biblia (23 imágenes)
 
-| # | Archivo | Segmento | Materiales | Cierre | Diseño | Hot Stamping |
-|---|---------|----------|------------|--------|--------|--------------|
-| 1 | Portada_BIBLIA (1).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí |
-| 2 | Portada_BIBLIA (2).png | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí |
-| 3 | Portada_BIBLIA (3).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí |
-| 4 | Portada_BIBLIA (4).png | **C-GE** | 1 PU | Sí | Tipográfico | Sí |
-| 5 | Portada_BIBLIA (5).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí |
-| 6 | Portada_BIBLIA (6).png | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí |
-| 7 | Portada_BIBLIA (7).png | **D-GC** | 1 PU | No | Decorativo | Sí |
-| 8 | Portada_BIBLIA (8).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí |
-| 9 | Portada_BIBLIA (9).png | **E-GI** | Vinilo | No | Simple | No |
-| 10 | Portada_BIBLIA (10).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí |
-| 11 | Portada_BIBLIA (11).png | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí |
-| 12 | Portada_BIBLIA (12).png | **C-GE** | 1 PU | Sí | Tipográfico | Sí |
-| 13 | Portada_BIBLIA (13).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí |
-| 14 | Portada_BIBLIA (14).png | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí |
-| 15 | Portada_BIBLIA (15).png | **D-GC** | 1 PU | No | Decorativo | Sí |
-| 16 | Portada_BIBLIA (16).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí |
-| 17 | Portada_BIBLIA (17).png | **E-GI** | Vinilo | No | Simple | No |
-| 18 | Portada_BIBLIA (18).png | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí |
-| 19 | Portada_BIBLIA (19).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí |
-| 20 | Portada_BIBLIA (20).png | **C-GE** | 1 PU | Sí | Tipográfico | Sí |
-| 21 | Portada_BIBLIA (21).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí |
-| 22 | Portada_BIBLIA (22).png | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí |
-| 23 | Portada_BIBLIA (23).png | **E-GI** | Vinilo | No | Simple | No |
+| # | Archivo | Segmento | Materiales | Cierre | Diseño | Hot Stamping | Relieve |
+|---|---------|----------|------------|--------|--------|--------------|---------|
+| 1 | Portada_BIBLIA (1).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí | Variable |
+| 2 | Portada_BIBLIA (2).png | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí | Baixo relevo |
+| 3 | Portada_BIBLIA (3).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí | Variable |
+| 4 | Portada_BIBLIA (4).png | **C-GE** | 1 PU | Sí | Tipográfico | Sí | Baixo relevo |
+| 5 | Portada_BIBLIA (5).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí | Variable |
+| 6 | Portada_BIBLIA (6).png | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí | Baixo relevo |
+| 7 | Portada_BIBLIA (7).png | **D-GC** | 1 PU | No | Decorativo | Sí | Baixo relevo |
+| 8 | Portada_BIBLIA (8).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí | Variable |
+| 9 | Portada_BIBLIA (9).png | **E-GI** | Vinilo | No | Simple | No | No |
+| 10 | Portada_BIBLIA (10).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí | Variable |
+| 11 | Portada_BIBLIA (11).png | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí | Baixo relevo |
+| 12 | Portada_BIBLIA (12).png | **C-GE** | 1 PU | Sí | Tipográfico | Sí | Baixo relevo |
+| 13 | Portada_BIBLIA (13).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí | Variable |
+| 14 | Portada_BIBLIA (14).png | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí | Baixo relevo |
+| 15 | Portada_BIBLIA (15).png | **D-GC** | 1 PU | No | Decorativo | Sí | Baixo relevo |
+| 16 | Portada_BIBLIA (16).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí | Variable |
+| 17 | Portada_BIBLIA (17).png | **E-GI** | Vinilo | No | Simple | No | No |
+| 18 | Portada_BIBLIA (18).png | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí | Baixo relevo |
+| 19 | Portada_BIBLIA (19).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí | Variable |
+| 20 | Portada_BIBLIA (20).png | **C-GE** | 1 PU | Sí | Tipográfico | Sí | Baixo relevo |
+| 21 | Portada_BIBLIA (21).png | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí | Variable |
+| 22 | Portada_BIBLIA (22).png | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí | Baixo relevo |
+| 23 | Portada_BIBLIA (23).png | **E-GI** | Vinilo | No | Simple | No | No |
 
 ### Tapas en Proceso (15 imágenes)
 
-| # | Archivo | Segmento | Materiales | Cierre | Diseño | Hot Stamping |
-|---|---------|----------|------------|--------|--------|--------------|
-| 1 | EN-PROCESO_01.jpg | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí |
-| 2 | EN-PROCESO_02.jpg | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí |
-| 3 | EN-PROCESO_03.jpg | **C-GE** | 1 PU | Sí | Tipográfico | Sí |
-| 4 | EN-PROCESO_04.jpg | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí |
-| 5 | EN-PROCESO_05.jpg | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí |
-| 6 | EN-PROCESO_06.jpg | **D-GC** | 1 PU | No | Decorativo | Sí |
-| 7 | EN-PROCESO_07.jpg | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí |
-| 8 | EN-PROCESO_08.jpg | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí |
-| 9 | EN-PROCESO_09.jpg | **E-GI** | Vinilo | No | Simple | No |
-| 10 | EN-PROCESO_10.jpg | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí |
-| 11 | EN-PROCESO_11.jpg | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí |
-| 12 | EN-PROCESO_12.jpg | **C-GE** | 1 PU | Sí | Tipográfico | Sí |
-| 13 | EN-PROCESO_13.jpg | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí |
-| 14 | EN-PROCESO_14.jpg | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí |
-| 15 | EN-PROCESO_15.jpg | **D-GC** | 1 PU | No | Decorativo | Sí |
+| # | Archivo | Segmento | Materiales | Cierre | Diseño | Hot Stamping | Relieve |
+|---|---------|----------|------------|--------|--------|--------------|---------|
+| 1 | EN-PROCESO_01.jpg | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí | Baixo relevo |
+| 2 | EN-PROCESO_02.jpg | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí | Variable |
+| 3 | EN-PROCESO_03.jpg | **C-GE** | 1 PU | Sí | Tipográfico | Sí | Baixo relevo |
+| 4 | EN-PROCESO_04.jpg | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí | Baixo relevo |
+| 5 | EN-PROCESO_05.jpg | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí | Variable |
+| 6 | EN-PROCESO_06.jpg | **D-GC** | 1 PU | No | Decorativo | Sí | Baixo relevo |
+| 7 | EN-PROCESO_07.jpg | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí | Baixo relevo |
+| 8 | EN-PROCESO_08.jpg | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí | Variable |
+| 9 | EN-PROCESO_09.jpg | **E-GI** | Vinilo | No | Simple | No | No |
+| 10 | EN-PROCESO_10.jpg | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí | Baixo relevo |
+| 11 | EN-PROCESO_11.jpg | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí | Variable |
+| 12 | EN-PROCESO_12.jpg | **C-GE** | 1 PU | Sí | Tipográfico | Sí | Baixo relevo |
+| 13 | EN-PROCESO_13.jpg | **A - Tritono** | 3 PUs | Sí | Elaborado | Sí | Baixo relevo |
+| 14 | EN-PROCESO_14.jpg | **B - Bitono** | 2 PUs | Sí | Semi-Elaborado | Sí | Variable |
+| 15 | EN-PROCESO_15.jpg | **D-GC** | 1 PU | No | Decorativo | Sí | Baixo relevo |
 
 ---
 

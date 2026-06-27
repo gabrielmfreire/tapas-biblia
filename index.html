@@ -83,16 +83,21 @@
             border-radius: 4px;
             color: #fff;
             cursor: pointer;
-            transition: opacity .15s, transform .15s
+            transition: opacity .2s, transform .15s
         }
 
         .leg span:hover {
             opacity: .85
         }
 
+        .leg.has-filter span:not(.on) {
+            opacity: .3
+        }
+
         .leg span.on {
             outline: 2px solid #fff;
-            outline-offset: 2px
+            outline-offset: 2px;
+            opacity: 1
         }
 
         .leg .count {
@@ -131,6 +136,11 @@
             gap: 12px
         }
 
+        .card-wrap {
+            display: flex;
+            flex-direction: column
+        }
+
         .card {
             position: relative;
             background: var(--card);
@@ -154,7 +164,11 @@
         }
 
         .card .inf {
-            padding: 8px
+            padding: 8px;
+            min-height: 62px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between
         }
 
         .card .nm {
@@ -169,7 +183,8 @@
             display: flex;
             gap: 4px;
             margin-top: 4px;
-            flex-wrap: wrap
+            flex-wrap: wrap;
+            min-height: 38px
         }
 
         .tg span {
@@ -237,6 +252,142 @@
             background: var(--gray)
         }
 
+        .sp {
+            background: var(--gold);
+            color: #000
+        }
+
+        .star {
+            position: absolute;
+            top: 6px;
+            left: 42px;
+            z-index: 3;
+            font-size: 14px;
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,.5))
+        }
+
+        .card.no-comercial {
+            opacity: .3
+        }
+
+        .no-com-tag {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            z-index: 4;
+            background: rgba(239, 68, 68, .9);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 1
+        }
+
+        .cons-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 6px 10px;
+            margin-top: -1px;
+            cursor: pointer;
+            transition: background .15s;
+            min-height: 58px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between
+        }
+
+        .cons-card:hover {
+            background: var(--hover)
+        }
+
+        .cons-card .cons-text {
+            font-size: 10px;
+            color: var(--muted);
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden
+        }
+
+        .cons-card .cons-tag {
+            display: inline-block;
+            font-size: 9px;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-weight: 600;
+            margin-top: 3px
+        }
+
+        .cons-tag.pos {
+            background: rgba(34, 197, 94, .2);
+            color: var(--green)
+        }
+
+        .cons-tag.neg {
+            background: rgba(239, 68, 68, .2);
+            color: var(--red)
+        }
+
+        .cons-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 300
+        }
+
+        .cons-modal.on {
+            display: flex
+        }
+
+        .cons-modal-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 32px;
+            max-width: 500px;
+            width: 90%;
+            position: relative
+        }
+
+        .cons-modal-box .cm-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 18px;
+            cursor: pointer
+        }
+
+        .cons-modal-box .cm-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--muted)
+        }
+
+        .cons-modal-box .cm-text {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 16px
+        }
+
+        .cons-modal-box .cm-type {
+            font-size: 13px;
+            font-weight: 600
+        }
+
         .tz {
             background: rgba(239, 68, 68, .2);
             color: var(--red);
@@ -273,14 +424,34 @@
             border: 1px solid rgba(107, 114, 128, .3)
         }
 
+        .tb {
+            background: rgba(59, 130, 246, .2);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, .3)
+        }
+
+        .tgv {
+            background: rgba(234, 179, 8, .2);
+            color: #eab308;
+            border: 1px solid rgba(234, 179, 8, .3)
+        }
+
+        .ths {
+            background: rgba(249, 115, 22, .2);
+            color: #f97316;
+            border: 1px solid rgba(249, 115, 22, .3)
+        }
+
         .modal {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, .85);
+            background: rgba(0, 0, 0, .9);
             display: none;
             align-items: center;
             justify-content: center;
-            z-index: 100
+            z-index: 100;
+            flex-direction: column;
+            gap: 12px
         }
 
         .modal.on {
@@ -289,16 +460,109 @@
 
         .modal .mc {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 90vw;
+            gap: 20px;
+            align-items: flex-start;
+            max-width: 95vw;
             max-height: 90vh
         }
 
-        .modal .mc img {
+        .modal .ml {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden
+        }
+
+        .modal .ml img {
             max-width: 100%;
-            max-height: 60vh;
+            max-height: 90vh;
+            object-fit: contain;
             border-radius: 8px
+        }
+
+        .modal .mr {
+            min-width: 340px;
+            max-width: 420px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px 10px 0 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            flex-shrink: 0;
+            z-index: 1
+        }
+
+        .ps-badge {
+            min-width: 340px;
+            max-width: 420px;
+            height: 20px;
+            background: var(--gold);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 0 10px 10px;
+            flex-shrink: 0
+        }
+
+        .ps-badge.on {
+            display: flex
+        }
+
+        .modal .mr .row-lg {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 14px
+        }
+
+        .modal .mr .seg-lg {
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            white-space: nowrap
+        }
+
+        .modal .mr .pvp-lg {
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            background: rgba(0, 0, 0, .5);
+            border: 1px solid rgba(255, 255, 255, .2);
+            white-space: nowrap
+        }
+
+        .modal .mr .tg-lg {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px
+        }
+
+        .modal .mr .tg-lg span {
+            font-size: 12px;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-weight: 600
+        }
+
+        .modal .mr .nm-lg {
+            font-size: 13px;
+            color: var(--muted);
+            word-break: break-all;
+            border-top: 1px solid var(--border);
+            padding-top: 14px;
+            margin-bottom: 14px
         }
 
         .modal .close {
@@ -316,77 +580,35 @@
             z-index: 102
         }
 
-        .modal .ov {
-            position: fixed;
-            top: 16px;
-            left: 50%;
-            transform: translateX(-50%);
+        .modal .mr .ref {
             display: flex;
-            flex-direction: column;
-            gap: 6px;
+            gap: 10px;
             align-items: center;
-            z-index: 101
-        }
-
-        .modal .ov .seg-lg {
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 700;
-            color: #fff;
-            display: inline-block;
-            width: fit-content
-        }
-
-        .modal .ov .pvp-lg {
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 700;
-            color: #fff;
-            background: rgba(0, 0, 0, .8);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, .3);
-            display: inline-block;
-            width: fit-content
-        }
-
-        .modal .ov .tg-lg {
-            display: flex;
-            gap: 6px;
+            justify-content: flex-start;
             flex-wrap: wrap;
-            justify-content: center
+            border-top: 1px solid var(--border);
+            padding-top: 14px
         }
 
-        .modal .ov .tg-lg span {
-            font-size: 12px;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-weight: 600
-        }
-
-        .modal .ref {
-            margin-top: 12px;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap
-        }
-
-        .modal .ref .rl {
+        .modal .mr .ref .rl {
             font-size: 10px;
             color: var(--muted);
             text-transform: uppercase;
             letter-spacing: 1px
         }
 
-        .modal .ref img {
-            height: 80px;
+        .modal .mr .ref img {
+            height: 70px;
             border-radius: 6px;
             border: 1px solid var(--border);
             object-fit: contain;
-            background: #111
+            background: #111;
+            cursor: pointer;
+            transition: transform .15s
+        }
+
+        .modal .mr .ref img:hover {
+            transform: scale(1.05)
         }
 
         .segdef {
@@ -515,6 +737,33 @@
             font-size: 16px;
             z-index: 201
         }
+
+        .navl, .navr {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 103;
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(255, 255, 255, .2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            color: #fff;
+            transition: background .15s;
+            user-select: none
+        }
+
+        .navl:hover, .navr:hover {
+            background: rgba(255, 255, 255, .25)
+        }
+
+        .navl { left: 16px }
+        .navr { right: 16px }
     </style>
 </head>
 
@@ -524,7 +773,9 @@
             <h1>SBA BibleCover</h1>
             <input type="text" id="s" placeholder="Buscar...">
         </div>
-        <div class="leg">
+        <div class="leg" id="leg">
+            <span class="all on" onclick="fs('all')" id="fall">Todos<span class="count" id="cAll"></span></span>
+            <span class="sp" onclick="fs('PS')" id="fPS">Preseleccionadas<span class="count" id="cPS"></span></span>
             <span class="sa" onclick="fs('A')" id="fA">A Tritono<span class="count" id="cA"></span></span>
             <span class="sb1" onclick="fs('B1')" id="fB1">B1 Bitono 1<span class="count" id="cB1"></span></span>
             <span class="sb2" onclick="fs('B2')" id="fB2">B2 Arte<span class="count" id="cB2"></span></span>
@@ -613,13 +864,25 @@
                 </div>
             </div>
         </div>
+        <footer style="margin-top: 40px; padding: 20px 0; border-top: 1px solid var(--border); text-align: center;">
+            <a href="diseno.html" style="background: var(--card); border: 1px solid var(--border); color: var(--muted); padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 13px; transition: all 0.2s; display: inline-block;">Recursos Diseño</a>
+        </footer>
     </div>
     <div class="modal" id="m" onclick="if(event.target===this)cm()">
         <button class="close" onclick="cm()">×</button>
-        <div class="ov" id="mov"></div>
+        <div class="navl" onclick="prev()">&#10094;</div>
+        <div class="navr" onclick="next()">&#10095;</div>
         <div class="mc">
-            <img id="mi" src="">
-            <div class="ref" id="mref"></div>
+            <div class="ml">
+                <img id="mi" src="">
+            </div>
+            <div style="display:flex;flex-direction:column">
+                <div class="mr">
+                    <div id="mov"></div>
+                    <div class="ref" id="mref"></div>
+                </div>
+                <div class="ps-badge" id="mps">&#11088; Preseleccionada</div>
+            </div>
         </div>
     </div>
     <div class="refmodal" id="rm" onclick="if(event.target===this)crm()">
@@ -629,117 +892,370 @@
             <div class="rg" id="rmg"></div>
         </div>
     </div>
+    <div class="cons-modal" id="conModal" onclick="if(event.target===this)closeCon()">
+        <div class="cons-modal-box">
+            <button class="cm-close" onclick="closeCon()">&#10005;</button>
+            <div class="cm-title">Bíblia <span id="conNum"></span></div>
+            <div class="cm-text" id="conText"></div>
+            <div class="cm-type" id="conType"></div>
+        </div>
+    </div>
     <script>
-        var D = [
-            { n: 1, s: "A", z: 1, h: 1, r: 1 }, { n: 2, s: "B1", z: 1, h: 1, r: 0 }, { n: 3, s: "B2", z: 1, h: 1, r: 1 }, { n: 4, s: "C1", z: 1, h: 1, r: 1 },
-            { n: 5, s: "A", z: 1, h: 1, r: 1 }, { n: 6, s: "B1", z: 1, h: 1, r: 0 }, { n: 7, s: "D", z: 0, h: 1, r: 1 }, { n: 8, s: "B2", z: 1, h: 1, r: 0 },
-            { n: 9, s: "E", z: 0, h: 0, r: 0 }, { n: 10, s: "B1", z: 1, h: 1, r: 1 }, { n: 11, s: "A", z: 1, h: 1, r: 1 }, { n: 12, s: "C1", z: 1, h: 1, r: 1 },
-            { n: 13, s: "B2", z: 1, h: 1, r: 1 }, { n: 14, s: "A", z: 1, h: 1, r: 1 }, { n: 15, s: "D", z: 0, h: 1, r: 1 }, { n: 16, s: "B1", z: 1, h: 1, r: 0 },
-            { n: 17, s: "E", z: 0, h: 0, r: 0 }, { n: 18, s: "A", z: 1, h: 1, r: 1 }, { n: 19, s: "B2", z: 1, h: 1, r: 0 }, { n: 20, s: "C1", z: 1, h: 1, r: 1 },
-            { n: 21, s: "B1", z: 1, h: 1, r: 1 }, { n: 22, s: "A", z: 1, h: 1, r: 1 }, { n: 23, s: "E", z: 0, h: 0, r: 0 }, { n: 24, s: "A", z: 1, h: 1, r: 1 },
-            { n: 25, s: "B1", z: 1, h: 1, r: 0 }, { n: 26, s: "B2", z: 1, h: 1, r: 1 }, { n: 27, s: "C1", z: 1, h: 1, r: 1 }, { n: 28, s: "A", z: 1, h: 1, r: 1 },
-            { n: 29, s: "B2", z: 1, h: 1, r: 1 }, { n: 30, s: "B2", z: 1, h: 1, r: 1 }, { n: 31, s: "B2", z: 1, h: 1, r: 1 }, { n: 32, s: "B2", z: 1, h: 1, r: 1 },
-            { n: 33, s: "B2", z: 1, h: 1, r: 0 }, { n: 34, s: "B2", z: 1, h: 1, r: 1 }, { n: 35, s: "B2", z: 1, h: 1, r: 1 }, { n: 36, s: "B2", z: 1, h: 1, r: 0 },
-            { n: 37, s: "B2", z: 1, h: 1, r: 1 }, { n: 38, s: "B2", z: 1, h: 1, r: 1 }, { n: 39, s: "B2", z: 1, h: 1, r: 1 }, { n: 40, s: "B2", z: 1, h: 1, r: 1 },
-            { n: 41, s: "B2", z: 1, h: 1, r: 1 }, { n: 42, s: "A", z: 1, h: 1, r: 1 }, { n: 43, s: "B1", z: 1, h: 1, r: 0 }, { n: 44, s: "B2", z: 1, h: 1, r: 1 },
-            { n: 45, s: "C1", z: 1, h: 1, r: 1 }, { n: 46, s: "A", z: 1, h: 1, r: 1 }, { n: 47, s: "B1", z: 1, h: 1, r: 0 }, { n: 48, s: "D", z: 0, h: 1, r: 1 },
-            { n: 49, s: "B2", z: 1, h: 1, r: 0 }, { n: 50, s: "E", z: 0, h: 0, r: 0 }, { n: 51, s: "B1", z: 1, h: 1, r: 1 }, { n: 52, s: "A", z: 1, h: 1, r: 1 },
-            { n: 53, s: "C1", z: 1, h: 1, r: 1 }, { n: 54, s: "B2", z: 1, h: 1, r: 1 }, { n: 55, s: "A", z: 1, h: 1, r: 1 }, { n: 56, s: "D", z: 0, h: 1, r: 1 },
-            { n: 57, s: "B1", z: 1, h: 1, r: 0 }, { n: 58, s: "E", z: 0, h: 0, r: 0 }, { n: 60, s: "A", z: 1, h: 1, r: 1 }, { n: 61, s: "B1", z: 1, h: 1, r: 1 },
-            { n: 62, s: "B2", z: 1, h: 1, r: 0 }, { n: 63, s: "C1", z: 1, h: 1, r: 1 }
-        ];
-        var SN = { A: "Tritono", B1: "Bitono 1", B2: "Arte", C1: "GE Letra Grande", D: "GC Canto Dorado", E: "Vinilo Económico" };
-        var SC = { A: "sa", B1: "sb1", B2: "sb2", C1: "sc1", D: "sc2", E: "se" };
-        var PV = { A: "AR$ 52.000", B1: "AR$ 47.000", B2: "AR$ 47.000", C1: "AR$ 44.000", D: "AR$ 35.000", E: "AR$ 33.000" };
-        var RF = {
-            A: ["page_9_img_3_xref_97.png", "page_10_img_3_xref_106.png", "page_12_img_3_xref_123.png"],
-            B1: ["page_9_img_4_xref_98.png", "page_10_img_4_xref_107.png", "page_13_img_3_xref_133.png"],
-            B2: ["page_9_img_3_xref_97.png", "page_9_img_4_xref_98.png", "page_13_img_4_xref_134.png"],
-            C1: ["page_10_img_3_xref_106.png", "page_10_img_4_xref_107.png", "page_13_img_5_xref_135.png"],
-            D: ["page_11_img_3_xref_115.png", "page_12_img_3_xref_123.png", "page_12_img_4_xref_124.png"],
-            E: ["page_12_img_4_xref_124.png", "page_12_img_5_xref_125.png", "page_13_img_3_xref_133.png"]
-        };
-        var CF = null;
-        function fs(s) {
-            CF = CF === s ? null : s;
-            document.querySelectorAll(".leg span").forEach(function (b) { b.classList.remove("on") });
-            if (CF) document.getElementById("f" + CF).classList.add("on");
-            UC(); R();
-        }
-        function UC() {
-            var c = { A: 0, B1: 0, B2: 0, C1: 0, D: 0, E: 0 };
-            D.forEach(function (d) { c[d.s]++ });
-            for (var k in c) document.getElementById("c" + k).textContent = c[k];
-        }
-        function R() {
-            var h = "", q = document.getElementById("s").value.toLowerCase(), ct = 0;
-            D.forEach(function (d) {
+        (function () {
+            // --- DATA ---
+            var D = [
+                { n: 1, s: "B2", z: 1, h: 1, r: 1 }, { n: 2, s: "D", z: 1, h: 1, r: 0 }, { n: 3, s: "C1", z: 1, h: 1, r: 1 }, { n: 4, s: "C1", z: 1, h: 1, r: 1 },
+                { n: 5, s: "C1", z: 1, h: 1, r: 1 }, { n: 6, s: "C1", z: 1, h: 1, r: 0 }, { n: 7, s: "C1", z: 0, h: 1, r: 1 }, { n: 8, s: "C1", z: 1, h: 1, r: 0 },
+                { n: 9, s: "C1", z: 0, h: 0, r: 0 }, { n: 10, s: "C1", z: 1, h: 1, r: 1 }, { n: 11, s: "C1", z: 1, h: 1, r: 1 }, { n: 12, s: "C1", z: 1, h: 1, r: 1 },
+                { n: 13, s: "D", z: 1, h: 1, r: 1 }, { n: 14, s: "C1", z: 1, h: 1, r: 1 }, { n: 15, s: "B1", z: 0, h: 1, r: 1 }, { n: 16, s: "C1", z: 1, h: 1, r: 0 },
+                { n: 17, s: "D", z: 0, h: 0, r: 0 }, { n: 18, s: "D", z: 1, h: 1, r: 1 }, { n: 19, s: "E", z: 1, h: 1, r: 0 }, { n: 20, s: "E", z: 1, h: 1, r: 1 },
+                { n: 21, s: "D", z: 1, h: 1, r: 1 }, { n: 22, s: "D", z: 1, h: 1, r: 1 }, { n: 23, s: "C1", z: 0, h: 0, r: 0 }, { n: 24, s: "D", z: 1, h: 1, r: 1 },
+                { n: 25, s: "C1", z: 1, h: 1, r: 0 }, { n: 26, s: "C1", z: 1, h: 1, r: 1 }, { n: 27, s: "C1", z: 1, h: 1, r: 1 }, { n: 28, s: "B2", z: 1, h: 1, r: 1 },
+                { n: 29, s: "B2", z: 1, h: 1, r: 1 }, { n: 30, s: "B2", z: 1, h: 1, r: 1 }, { n: 31, s: "B2", z: 1, h: 1, r: 1 }, { n: 32, s: "B2", z: 1, h: 1, r: 1 },
+                { n: 33, s: "B2", z: 1, h: 1, r: 0 }, { n: 34, s: "B2", z: 1, h: 1, r: 1 }, { n: 35, s: "B2", z: 1, h: 1, r: 1 }, { n: 36, s: "B2", z: 1, h: 1, r: 0 },
+                { n: 37, s: "B2", z: 1, h: 1, r: 1 }, { n: 38, s: "B2", z: 1, h: 1, r: 1 }, { n: 39, s: "B2", z: 1, h: 1, r: 1 }, { n: 40, s: "B2", z: 1, h: 1, r: 1 },
+                { n: 41, s: "B2", z: 1, h: 1, r: 1 }, { n: 42, s: "B1", z: 1, h: 1, r: 1 }, { n: 43, s: "B1", z: 1, h: 1, r: 1 }, { n: 44, s: "B1", z: 1, h: 1, r: 1 },
+                { n: 45, s: "B1", z: 1, h: 1, r: 1 }, { n: 46, s: "B1", z: 1, h: 1, r: 1 }, { n: 47, s: "B1", z: 1, h: 1, r: 1 }, { n: 48, s: "B1", z: 0, h: 1, r: 1 },
+                { n: 49, s: "B1", z: 1, h: 1, r: 1 }, { n: 50, s: "B1", z: 0, h: 0, r: 1 }, { n: 51, s: "B1", z: 1, h: 1, r: 1 }, { n: 52, s: "B1", z: 1, h: 1, r: 1 },
+                { n: 53, s: "B1", z: 1, h: 1, r: 1 }, { n: 54, s: "B1", z: 1, h: 1, r: 1 }, { n: 55, s: "B1", z: 1, h: 1, r: 1 }, { n: 56, s: "B1", z: 0, h: 1, r: 1 },
+                { n: 57, s: "C1", z: 1, h: 1, r: 1 }, { n: 58, s: "B1", z: 0, h: 0, r: 1 }, { n: 60, s: "B1", z: 1, h: 1, r: 1 }, { n: 61, s: "B1", z: 1, h: 1, r: 1 },
+                { n: 62, s: "B1", z: 1, h: 1, r: 1 }, { n: 63, s: "B1", z: 1, h: 1, r: 1 }
+            ];
+
+            var TAGS = {
+                1: ["BITONO", "ARTE"],
+                2: ["RELIEVE", "GOLD FOIL"],
+                3: ["RELIEVE"],
+                4: ["RELIEVE"],
+                5: ["RELIEVE"],
+                6: ["RELIEVE"],
+                7: ["BITONO", "RELIEVE"],
+                8: ["RELIEVE"],
+                9: ["RELIEVE"],
+                10: ["RELIEVE"],
+                11: ["RELIEVE"],
+                12: ["RELIEVE"],
+                13: ["ARTE"],
+                14: ["RELIEVE", "BITONO"],
+                15: ["RELIEVE", "BITONO"],
+                16: ["RELIEVE", "BITONO"],
+                17: ["ARTE"],
+                18: ["ARTE"],
+                19: ["RELIEVE"],
+                20: ["RELIEVE"],
+                21: ["RELIEVE"],
+                22: ["ARTE"],
+                23: ["BITONO", "RELIEVE"],
+                24: ["ARTE"],
+                25: ["RELIEVE"],
+                26: ["RELIEVE"],
+                27: ["RELIEVE"],
+                28: ["BITONO", "ARTE"],
+                29: ["BITONO", "ARTE"],
+                30: ["BITONO", "ARTE"],
+                31: ["BITONO", "ARTE"],
+                32: ["BITONO", "ARTE"],
+                33: ["BITONO", "ARTE"],
+                34: ["BITONO", "ARTE"],
+                35: ["BITONO", "ARTE"],
+                36: ["BITONO", "ARTE"],
+                37: ["BITONO", "ARTE"],
+                38: ["BITONO", "ARTE"],
+                39: ["BITONO", "ARTE"],
+                40: ["BITONO", "ARTE"],
+                41: ["BITONO", "ARTE"],
+                42: ["RELIEVE", "BITONO"],
+                43: ["BITONO", "RELIEVE"],
+                44: ["RELIEVE"],
+                45: ["RELIEVE"],
+                46: ["RELIEVE"],
+                47: ["RELIEVE", "GOLD FOIL"],
+                48: ["RELIEVE"],
+                49: ["HOT STAMPING", "RELIEVE"],
+                50: ["RELIEVE", "HOT STAMPING"],
+                51: ["HOT STAMPING", "RELIEVE"],
+                52: ["HOT STAMPING", "RELIEVE"],
+                53: ["RELIEVE", "BITONO"],
+                54: ["RELIEVE", "BITONO"],
+                55: ["RELIEVE", "BITONO"],
+                56: ["RELIEVE", "GOLD FOIL"],
+                57: ["RELIEVE", "GOLD FOIL"],
+                58: ["BITONO", "RELIEVE"],
+                60: ["BITONO", "RELIEVE"],
+                61: ["RELIEVE", "BITONO"],
+                62: ["RELIEVE", "BITONO"],
+                63: ["RELIEVE", "GOLD FOIL"]
+            };
+
+            var SN = { A: "Tritono", B1: "Bitono 1", B2: "Arte", C1: "GE Letra Grande", D: "GC Canto Dorado", E: "Vinilo Económico" };
+            var SC = { A: "sa", B1: "sb1", B2: "sb2", C1: "sc1", D: "sc2", E: "se" };
+            var PV = { A: "AR$ 52.000", B1: "AR$ 47.000", B2: "AR$ 47.000", C1: "AR$ 44.000", D: "AR$ 35.000", E: "AR$ 33.000" };
+            var RF = {
+                A: ["page_9_img_3_xref_97.png", "page_10_img_3_xref_106.png", "page_12_img_3_xref_123.png"],
+                B1: ["page_9_img_4_xref_98.png", "page_10_img_4_xref_107.png", "page_13_img_3_xref_133.png"],
+                B2: ["page_9_img_3_xref_97.png", "page_9_img_4_xref_98.png", "page_13_img_4_xref_134.png"],
+                C1: ["page_10_img_3_xref_106.png", "page_10_img_4_xref_107.png", "page_13_img_5_xref_135.png"],
+                D: ["page_11_img_3_xref_115.png", "page_12_img_3_xref_123.png", "page_12_img_4_xref_124.png"],
+                E: ["page_12_img_4_xref_124.png", "page_12_img_5_xref_125.png", "page_13_img_3_xref_133.png"]
+            };
+            var PS = new Set([1, 4, 14, 23, 33, 39, 40, 42, 47, 53, 57, 63]);
+            var NC = new Set([13, 17, 18]);
+            var CON = {
+                1: { t: "Calificadas como la \"número uno por escándalo\".", p: 1 },
+                2: { t: "Calificadas como la \"número uno por escándalo\".", p: 1 },
+                4: { t: "Elección confirmada por el color.", p: 1 },
+                11: { t: "Muy infantil.", p: 0 },
+                14: { t: "Calificada como \"linda\".", p: 1 },
+                16: { t: "Considerada \"un poquito cargada\".", p: 0 },
+                18: { t: "Considerada \"rara\" por el diseño del barco en la tempestad.", p: 0 },
+                23: { t: "Aceptada (incluyendo las variaciones violeta y rosa).", p: 1 },
+                33: { t: "Consideradas como buenas opciones de venta.", p: 1 },
+                39: { t: "Consideradas como buenas opciones de venta.", p: 1 },
+                40: { t: "Consideradas como buenas opciones de venta.", p: 1 },
+                42: { t: "Clásica, se considera que podría funcionar bien.", p: 1 },
+                47: { t: "Comprable/Aceptada.", p: 1 },
+                48: { t: "Considerada para traer al catálogo.", p: 1 },
+                49: { t: "Considerada para traer al catálogo.", p: 1 },
+                53: { t: "Considerada para traer al catálogo.", p: 1 },
+                56: { t: "Genera dudas por el color celeste.", p: 0 },
+                57: { t: "Elección segura de compra.", p: 1 },
+                61: { t: "Considerada apta para la línea.", p: 1 }
+            };
+
+            // --- SAFE HELPERS ---
+            function segName(s) { return SN[s] || ""; }
+            function segCss(s) { return SC[s] || ""; }
+            function segPrice(s) { return PV[s] || ""; }
+            function segRefs(s) { return RF[s] || []; }
+            function el(id) { return document.getElementById(id); }
+
+            // --- STATE ---
+            var CF = null;
+            var CI = -1;
+            var FL = [];
+
+            // --- LEGEND COUNTS ---
+            function UC() {
+                var counts = {};
+                D.forEach(function (d) {
+                    if (d.s) counts[d.s] = (counts[d.s] || 0) + 1;
+                });
+                ["A", "B1", "B2", "C1", "D", "E"].forEach(function (k) {
+                    var el2 = el("c" + k);
+                    if (el2) el2.textContent = counts[k] || 0;
+                });
+                el("cAll").textContent = D.length;
+                el("cPS").textContent = PS.size;
+            }
+
+            // --- FILTER ---
+            window.fs = function (s) {
+                if (s === "all") { CF = null; }
+                else { CF = (CF === s) ? null : s; }
+                document.querySelectorAll(".leg span").forEach(function (b) { b.classList.remove("on"); });
+                var leg = el("leg");
+                if (CF) {
+                    var btn = el("f" + CF);
+                    if (btn) btn.classList.add("on");
+                    leg.classList.add("has-filter");
+                } else {
+                    el("fall").classList.add("on");
+                    leg.classList.remove("has-filter");
+                }
+                UC();
+                R();
+            };
+
+            // --- RENDER CARDS ---
+            function R() {
+                var q = (el("s").value || "").toLowerCase();
+                var h = "";
+                var ct = 0;
+                FL = [];
+
+                D.forEach(function (d, i) {
+                    var fn = "tapa-biblia_-" + d.n + ".jpg";
+                    var tz = d.z ? "CIERRE" : "SIN CIERRE";
+                    var ts = d.h ? "STAMP" : "SIN STAMP";
+                    var tr = d.r ? "RELIEVE" : "SIN RELIEVE";
+                    var sn = segName(d.s);
+
+                    if (CF === "PS" && !PS.has(d.n)) return;
+                    if (CF && CF !== "PS" && d.s !== CF) return;
+                    if (q) {
+                        var hay = fn.toLowerCase().indexOf(q) !== -1
+                            || (d.s && d.s.toLowerCase().indexOf(q) !== -1)
+                            || sn.toLowerCase().indexOf(q) !== -1
+                            || tz.toLowerCase().indexOf(q) !== -1
+                            || ts.toLowerCase().indexOf(q) !== -1
+                            || tr.toLowerCase().indexOf(q) !== -1;
+                        if (!hay) return;
+                    }
+
+                    FL.push(i);
+                    ct++;
+
+                    var star = PS.has(d.n) ? '<span class="star">&#11088;</span>' : '';
+                    var nc = NC.has(d.n);
+                    var ncCls = nc ? " no-comercial" : "";
+                    var ncTag = nc ? '<span class="no-com-tag">No comercial</span>' : '';
+
+                    h += '<div class="card-wrap">';
+                    h += '<div class="card' + ncCls + '" onclick="om(' + (FL.length - 1) + ')">';
+                    if (d.s) h += '<span class="seg ' + SC[d.s] + '">' + d.s + '</span>';
+                    h += star + ncTag;
+                    h += '<span class="pvp">' + segPrice(d.s) + '</span>';
+                    h += '<img src="Produzidas/' + fn + '" loading="lazy">';
+                    h += '<div class="inf"><div class="nm">' + fn.replace(/\.(jpg|png)$/, "") + '</div>';
+                    var cardTags = TAGS[d.n];
+                    if (cardTags && cardTags.length > 0) {
+                        h += '<div class="tg">';
+                        cardTags.forEach(function(tag) {
+                            var cls = '';
+                            if (tag === 'RELIEVE') cls = 'tr';
+                            else if (tag === 'BITONO') cls = 'tb';
+                            else if (tag === 'ARTE') cls = 'ts';
+                            else if (tag === 'GOLD FOIL') cls = 'tgv';
+                            else if (tag === 'HOT STAMPING') cls = 'ths';
+                            else cls = 'tn';
+                            h += '<span class="' + cls + '">' + tag + '</span>';
+                        });
+                        h += '</div>';
+                    }
+                    h += '</div>';
+                    h += '</div>';
+
+                    var con = CON[d.n];
+                    if (con) {
+                        var cp = con.p ? "pos" : "neg";
+                        var cl = con.p ? "Positivo" : "Negativo";
+                        h += '<div class="cons-card" onclick="event.stopPropagation();openCon(' + d.n + ')">';
+                        h += '<div class="cons-text">' + con.t + '</div>';
+                        h += '<span class="cons-tag ' + cp + '">' + cl + '</span>';
+                        h += '</div>';
+                    } else {
+                        h += '<div class="cons-card" style="opacity:.3;cursor:default">';
+                        h += '<div class="cons-text">&nbsp;</div>';
+                        h += '<div class="cons-text" style="font-size:10px;color:var(--muted)">Sin consideraciones</div>';
+                        h += '</div>';
+                    }
+
+                    h += '</div>';
+                });
+
+                el("p").innerHTML = '<div class="grid">' + h + '</div>';
+                document.querySelector(".tabs button").textContent = "Producidas (" + ct + ")";
+            }
+
+            // --- TABS ---
+            window.t = function (x) {
+                var btns = document.querySelectorAll(".tabs button");
+                btns[0].className = x === "p" ? "on" : "";
+                btns[1].className = x === "d" ? "on" : "";
+                el("p").style.display = x === "p" ? "" : "none";
+                el("d").style.display = x === "d" ? "" : "none";
+            };
+
+            // --- MODAL BIBLIA ---
+            window.om = function (idx) {
+                CI = idx;
+                var d = D[FL[idx]];
+                if (!d) return;
                 var fn = "tapa-biblia_-" + d.n + ".jpg";
-                if (CF && d.s !== CF) return;
-                if (q && !fn.toLowerCase().includes(q) && !d.s.toLowerCase().includes(q)) return;
-                ct++;
-                var tz = d.z ? "CIERRE" : "SIN CIERRE", tc = d.z ? "tz" : "tn";
-                var ts = d.h ? "STAMP" : "SIN STAMP", tsc = d.h ? "ts" : "tns";
-                h += '<div class="card" onclick="om(\'' + fn + '\',\'' + d.s + '\',' + d.z + ',' + d.h + ',' + d.r + ')">';
-                h += '<span class="seg ' + SC[d.s] + '">' + d.s + '</span>';
-                h += '<span class="pvp">' + PV[d.s] + '</span>';
-                h += '<img src="Produzidas/' + fn + '" loading="lazy">';
-                h += '<div class="inf"><div class="nm">' + fn.replace(/\.(jpg|png)$/, "") + '</div>';
-                h += '<div class="tg"><span class="' + tc + '">' + tz + '</span>';
-                h += '<span class="' + tsc + '">' + ts + '</span>';
-                h += '<span class="' + (d.r ? "tr" : "tnr") + '">' + (d.r ? "RELIEVE" : "SIN RELIEVE") + '</span></div></div></div>';
-            });
-            document.getElementById("p").innerHTML = '<div class="grid">' + h + '</div>';
-            document.querySelector(".tabs button").textContent = "Producidas (" + ct + ")";
-        }
-        function t(x) {
-            var btns = document.querySelectorAll(".tabs button");
-            btns[0].className = x === "p" ? "on" : "";
-            btns[1].className = x === "d" ? "on" : "";
-            document.getElementById("p").style.display = x === "p" ? "" : "none";
-            document.getElementById("d").style.display = x === "d" ? "" : "none";
-        }
-        function om(fn, s, z, h, r) {
-            document.getElementById("mi").src = "Produzidas/" + fn;
-            var tz = z ? "CIERRE" : "SIN CIERRE", tc = z ? "tz" : "tn";
-            var ts = h ? "STAMP" : "SIN STAMP", tsc = h ? "ts" : "tns";
-            var tr = r ? "RELIEVE" : "SIN RELIEVE", trc = r ? "tr" : "tnr";
-            var ov = '<span class="seg-lg ' + SC[s] + '">' + s + ' - ' + SN[s] + '</span>';
-            ov += '<span class="pvp-lg">' + PV[s] + '</span>';
-            ov += '<div class="tg-lg"><span class="' + tc + '">' + tz + '</span><span class="' + tsc + '">' + ts + '</span><span class="' + trc + '">' + tr + '</span></div>';
-            document.getElementById("mov").innerHTML = ov;
-            var refs = RF[s] || [];
-            var rh = '<span class="rl">Referencia:</span>';
-            refs.forEach(function (r) { rh += '<img src="extracted_temp/' + r + '" loading="lazy">'; });
-            document.getElementById("mref").innerHTML = rh;
-            document.getElementById("m").classList.add("on");
-        }
-        function cm() { document.getElementById("m").classList.remove("on") }
-        function crm() { document.getElementById("rm").classList.remove("on") }
-        function orm(s) {
-            var refs = RF[s] || [];
-            var h = '';
-            refs.forEach(function (r) { h += '<img src="extracted_temp/' + r + '" loading="lazy">'; });
-            document.getElementById("rmg").innerHTML = h;
-            document.getElementById("rmh").textContent = s + ' - ' + SN[s] + ' - Referencias';
-            document.getElementById("rm").classList.add("on");
-        }
-        function loadRefs() {
-            var segs = ["A", "B1", "B2", "C1", "D", "E"];
-            segs.forEach(function (s) {
-                var refs = RF[s] || [];
-                var el = document.getElementById("refs" + s);
-                if (!el) return;
+                el("mi").src = "Produzidas/" + fn;
+                var tz = d.z ? "CIERRE" : "SIN CIERRE";
+                var ts = d.h ? "STAMP" : "SIN STAMP";
+                var tr = d.r ? "RELIEVE" : "SIN RELIEVE";
+                var sName = segName(d.s);
+                var sCss = segCss(d.s);
+                var ov = '<div class="row-lg">';
+                if (d.s) ov += '<span class="seg-lg ' + sCss + '">' + d.s + ' - ' + sName + '</span>';
+                ov += '<span class="pvp-lg">PVP: ' + segPrice(d.s) + '</span></div>';
+                ov += '<div class="nm-lg">' + fn.replace(/\.(jpg|png)$/, "") + '</div>';
+                var modalTags = TAGS[d.n];
+                if (modalTags && modalTags.length > 0) {
+                    ov += '<div class="tg" style="margin-top:8px">';
+                    modalTags.forEach(function(tag) {
+                        var cls = '';
+                        if (tag === 'RELIEVE') cls = 'tr';
+                        else if (tag === 'BITONO') cls = 'tb';
+                        else if (tag === 'ARTE') cls = 'ts';
+                        else if (tag === 'GOLD FOIL') cls = 'tgv';
+                        else if (tag === 'HOT STAMPING') cls = 'ths';
+                        else cls = 'tn';
+                        ov += '<span class="' + cls + '">' + tag + '</span>';
+                    });
+                    ov += '</div>';
+                }
+                el("mov").innerHTML = ov;
+
+                var refs = segRefs(d.s);
+                var rh = '<span class="rl">Referencia:</span>';
+                refs.forEach(function (r) { rh += '<img src="extracted_temp/' + r + '" loading="lazy">'; });
+                el("mref").innerHTML = rh;
+
+                if (PS.has(d.n)) el("mps").classList.add("on");
+                else el("mps").classList.remove("on");
+
+                el("m").classList.add("on");
+            };
+
+            window.prev = function () { if (CI > 0) om(CI - 1); };
+            window.next = function () { if (CI < FL.length - 1) om(CI + 1); };
+            window.cm = function() { el("m").classList.remove("on"); }
+            window.crm = function() { el("rm").classList.remove("on"); }
+
+            // --- MODAL REFERENCIA ---
+            window.orm = function (s) {
+                var refs = segRefs(s);
                 var h = '';
-                var show = refs.slice(0, 2);
-                show.forEach(function (r) { h += '<img src="extracted_temp/' + r + '" loading="lazy" onclick="orm(\'' + s + '\')">'; });
-                if (refs.length > 2) h += '<div class="more" onclick="orm(\'' + s + '\')">' + '+' + (refs.length - 2) + ' más</div>';
-                el.innerHTML = h;
+                refs.forEach(function (r) { h += '<img src="extracted_temp/' + r + '" loading="lazy">'; });
+                el("rmg").innerHTML = h;
+                el("rmh").textContent = s + ' - ' + segName(s) + ' - Referencias';
+                el("rm").classList.add("on");
+            };
+
+            function loadRefs() {
+                ["A", "B1", "B2", "C1", "D", "E"].forEach(function (s) {
+                    var refs = segRefs(s);
+                    var box = el("refs" + s);
+                    if (!box) return;
+                    var h = '';
+                    var show = refs.slice(0, 2);
+                    show.forEach(function (r) { h += '<img src="extracted_temp/' + r + '" loading="lazy" onclick="orm(\'' + s + '\')">'; });
+                    if (refs.length > 2) h += '<div class="more" onclick="orm(\'' + s + '\')">+' + (refs.length - 2) + ' más</div>';
+                    box.innerHTML = h;
+                });
+            }
+
+            // --- MODAL CONSIDERACIONES ---
+            window.openCon = function (n) {
+                var c = CON[n];
+                if (!c) return;
+                el("conNum").textContent = n;
+                el("conText").textContent = c.t;
+                var tp = el("conType");
+                tp.textContent = c.p ? "Positivo" : "Negativo";
+                tp.style.color = c.p ? "var(--green)" : "var(--red)";
+                el("conModal").classList.add("on");
+            };
+            window.closeCon = function () { el("conModal").classList.remove("on"); };
+
+            // --- EVENTS ---
+            el("s").addEventListener("input", R);
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape") { cm(); crm(); closeCon(); }
+                if (el("m").classList.contains("on")) {
+                    if (e.key === "ArrowLeft") prev();
+                    if (e.key === "ArrowRight") next();
+                }
             });
-        }
-        document.getElementById("s").addEventListener("input", R);
-        document.addEventListener("keydown", function (e) { if (e.key === "Escape") { cm(); crm(); } });
-        UC(); R(); loadRefs();
+
+            // --- INIT ---
+            UC();
+            R();
+            loadRefs();
+        })();
     </script>
 </body>
 
