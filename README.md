@@ -21,9 +21,10 @@ BibleCover/
 │   ├── page_*_img_*_xref_*.png # Imágenes de referencia por página
 │   └── ...                     # Total de 45 imágenes extraídas
 ├── Produzidas/                  # Tapas producidas por el sistema
-│   ├── tapa-biblia_ (N).jpg/png # 63 tapas producidas
+│   ├── tapa-biblia_ (N).jpg/png # 62 tapas producidas
 │   └── ...
-├── gallery.html                 # Interfaz web para visualización (shadcn UI)
+├── index.html                   # Interfaz web principal (home)
+├── diseno.html                  # Página de recursos de diseño
 ├── segments.json                # Definiciones detalladas de los segmentos
 ├── classification_report.md     # Informe de clasificación de las tapas
 └── README.md                    # Este archivo
@@ -115,18 +116,21 @@ BibleCover/
 
 ### 3. Producción de Tapas
 - Generación de tapas estandarizadas para cada segmento
-- 63 tapas producidas
+- 62 tapas producidas
 - **Clasificación automática** de cada tapa producida
 
-### 4. Interfaz de Visualización (shadcn UI)
-- **gallery.html**: Interfaz web responsiva con diseño shadcn
-- Layout en grade con cards para cada imagen
+### 4. Interfaz de Visualización (Home)
+- **index.html**: Interfaz web principal con tema oscuro
+- Layout en grid responsivo con cards para cada tapa
 - **Tabs**: Navegación entre Producidas y Segmentos
 - **Búsqueda**: Filtrar imágenes por nombre o segmento
-- **Modal/Lightbox**: Visualización en pantalla completa
-- **Estadísticas**: Contadores automáticos
-- Tema oscuro para mejor visualización de las imágenes
+- **Modal/Lightbox**: Visualización en pantalla completa con navegación (flechas izquierda/derecha)
+- **Modal de Referencias**: Visualización de imágenes de referencia por segmento
+- **Modal de Consideraciones**: Notas positivas/negativas sobre cada tapa
+- **Estadísticas**: Contadores automáticos por segmento
+- **Filtros por Segmento**: Botones de leyenda para filtrar por segmento
 - **PVP**: Precio visible al pasar el mouse sobre cada tapa
+- **Navegación por teclado**: Escape para cerrar, flechas para navegar
 
 ### 5. Sistema de Clasificación
 - Definiciones detalladas en `segments.json`
@@ -140,13 +144,16 @@ BibleCover/
 ## Cómo Usar
 
 ### Visualización de las Imágenes
-1. Abra el archivo `gallery.html` en cualquier navegador web
+1. Abra el archivo `index.html` en cualquier navegador web
 2. Navegue por las pestañas:
    - **Producidas**: Tapas clasificadas automáticamente
    - **Segmentos**: Definiciones detalladas de cada segmento
 3. Use la búsqueda para filtrar por nombre o segmento
-4. Haga clic en cualquier imagen para ver en pantalla completa
-5. Pase el mouse sobre una tapa para ver su precio (PVP)
+4. Filtre por segmento usando los botones de leyenda (Todos, Preseleccionadas, A, B1, B2, C1, D, E)
+5. Haga clic en cualquier imagen para ver en pantalla completa
+6. Use las flechas izquierda/derecha o teclado para navegar entre tapas
+7. Presione Escape o haga clic fuera del modal para cerrar
+8. Pase el mouse sobre una tapa para ver su precio (PVP)
 
 ### Proceso de Producción
 1. Las imágenes de referencia son extraídas del PDF
@@ -154,6 +161,10 @@ BibleCover/
 3. Tapas son producidas siguiendo los patrones definidos
 4. El sistema clasifica automáticamente cada tapa producida
 5. El resultado final se almacena en la carpeta "Produzidas"
+
+### Recursos de Diseño
+- Acceda a la página de recursos de diseño desde el enlace "Recursos Diseño" en el pie de la home
+- Contiene definiciones visuales de cada segmento con imágenes de referencia
 
 ## Clasificación Automática
 
@@ -181,29 +192,41 @@ El sistema clasifica las tapas con base en los siguientes criterios:
 
 ## Tecnologías Utilizadas
 
-- **HTML5/CSS3**: Interfaz de visualización
-- **Tailwind CSS**: Framework CSS (shadcn UI)
-- **JavaScript**: Interactividad y clasificación
+- **HTML5/CSS3**: Interfaz de visualización con tema oscuro
+- **JavaScript vanilla**: Interactividad, filtros y modales
 - **JSON**: Definiciones de los segmentos
 - **Procesamiento de Imágenes**: Extracción y manipulación de imágenes del PDF
 
 ## Datos del Proyecto
 
 - **Total de Imágenes de Referencia**: 45
-- **Total de Tapas Producidas**: 63
-- **Segmentos Definidos**: 6
+- **Total de Tapas Producidas**: 62
+- **Segmentos Definidos**: 6 (A, B1, B2, C1, D, E)
 - **Páginas de Referencia**: 5 (páginas 9-13 del PDF)
+- **Bíblias Preseleccionadas**: 12 (números 1, 4, 14, 23, 33, 39, 40, 42, 47, 53, 57, 63)
+- **Bíblias No Comerciales**: 3 (números 13, 17, 18)
 
 ### Distribución por Segmento (Tapas Producidas)
 
-| Segmento | Cantidad | Precio PVP |
-|----------|----------|------------|
-| A - Tritono | 12 | AR$ 52.000 |
-| B - Bitono | 20 | AR$ 47.000 |
-| C-GE | 7 | AR$ 44.000 |
-| C-GC | 5 | AR$ 35.000 |
-| E-GI | 5 | AR$ 33.000 |
-| **Total** | **49** | - |
+| Segmento | Bíblias | Precio PVP |
+|----------|---------|------------|
+| A - Tritono | 0 | AR$ 52.000 |
+| B1 - Bitono 1 | 21 | AR$ 47.000 |
+| B2 - Arte | 15 | AR$ 47.000 |
+| C1 - GE Letra Grande | 17 | AR$ 44.000 |
+| D - GC Canto Dorado | 7 | AR$ 35.000 |
+| E - GI Vinilo Económico | 2 | AR$ 33.000 |
+| **Total** | **62** | - |
+
+#### Detalle de Bíblias por Segmento
+
+| Segmento | Números de Bíblias |
+|----------|-------------------|
+| B1 | 15, 42-56, 58, 60-63 |
+| B2 | 1, 28-41 |
+| C1 | 3-12, 14, 16, 23, 25-27, 57 |
+| D | 2, 13, 17-18, 21-22, 24 |
+| E | 19-20 |
 
 ## Próximos Pasos
 
@@ -223,3 +246,22 @@ Para más información sobre el proyecto, consulte:
 - Documento de especificación: `MATERIAL/PROYECTO BIBLIAS SBA.pdf`
 - Definiciones de los segmentos: `segments.json`
 - Informe de clasificación: `classification_report.md`
+
+## Registro de Cambios
+
+### 2026-06-26
+
+#### Corrección de Modales
+- **Problema**: Los botones de cerrar (×) no funcionaban en los modales de la home
+- **Problema**: Hacer clic fuera del contenido no cerraba los modales
+- **Causa**: Las funciones `cm()` y `crm()` estaban definidas dentro del IIFE (escopo local) pero las llamadas onclick en HTML esperaban que fueran globales
+- **Solución**: Exponer funciones via `window.cm` y `window.crm` para que sean accesibles desde los atributos onclick del HTML
+
+#### Asignación de Segmentos
+- Se actualizaron las asignaciones de segmentos para todas las bíblias (números 1-63)
+- **B1 (Bitono 1)**: 15, 42-56, 58, 60-63 (21 bíblias)
+- **B2 (Arte)**: 1, 28-41 (15 bíblias)
+- **C1 (GE Letra Grande)**: 3-12, 14, 16, 23, 25-27, 57 (17 bíblias)
+- **D (GC Canto Dorado)**: 2, 13, 17-18, 21-22, 24 (7 bíblias)
+- **E (GI Vinilo Económico)**: 19-20 (2 bíblias)
+- **Total**: 62 bíblias (número 59 no existe en el dataset)
